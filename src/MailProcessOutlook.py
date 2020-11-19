@@ -15,6 +15,7 @@ class MailProcessOutlook(object):
     def __init__(self):
         self.outlook_ = None
         self.accounts_ = None
+        self.current_account_ = None
         self.out_info_ = []
         return
 
@@ -36,7 +37,7 @@ class MailProcessOutlook(object):
             print("Exception occured, value = ", value)
         return
 
-    def send_mail(self):
+    def send_mail(self, send_account):
         # 0: olMailItem
         mail_item = self.outlook_.CreateItem(0)
 
@@ -54,7 +55,7 @@ class MailProcessOutlook(object):
 
     """连接Outlook邮箱，读取收件箱内的邮件内容"""
 
-    def read_outlook_mailbox(self, folder, read_num):
+    def read_outlook_mailbox(self, read_account, folder, read_num):
 
         # OLE 的很多枚举值
         # olFolderDeletedItems 3 已发送
@@ -73,10 +74,22 @@ class MailProcessOutlook(object):
             ol_folder = 16
         else:
             ol_folder = 6
-        # 获取收件箱所在位置  数字6代表收件箱
-        inbox = self.outlook_.GetDefaultFolder(ol_folder)
+
+        read_box = None
+        # 如果不指定账号，读取默认邮箱
+        if read_account == "":
+            read_box = self.outlook_.GetDefaultFolder(ol_folder)
+        else:
+            for account in self.accounts_:
+                if read_account == account.DeliveryStore.DisplayName:
+                    read_box = self.outlook_.Folders(account.DeliveryStore.DisplayName)
+                    print("****Account Name**********************************", file=f)
+
+        if not read_box:
+            return -1
+
         # 获取收件箱下的所有邮件
-        mails = inbox.Items
+        mails = read_box.Items
         mails.Sort('[ReceivedTime]', True)  # 邮件按时间排序
         # 读取收件箱内前3封邮件的所有信息（下标从1开始）
         for index in range(1, 4):
