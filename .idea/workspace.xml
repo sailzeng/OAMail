@@ -108,25 +108,61 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="731" y="357" key="#com.intellij.fileTypes.FileTypeChooser/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605361775063" />
-    <state width="2027" height="305" key="GridCell.Tab.0.bottom" timestamp="1605419907890">
+    <state width="2027" height="376" key="GridCell.Tab.0.bottom" timestamp="1606073540009">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2027" height="305" key="GridCell.Tab.0.bottom/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605419907890" />
-    <state width="2027" height="305" key="GridCell.Tab.0.center" timestamp="1605419907890">
+    <state width="2027" height="376" key="GridCell.Tab.0.bottom/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
+    <state width="2027" height="376" key="GridCell.Tab.0.center" timestamp="1606073540008">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2027" height="305" key="GridCell.Tab.0.center/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605419907890" />
-    <state width="2027" height="305" key="GridCell.Tab.0.left" timestamp="1605419907889">
+    <state width="2027" height="376" key="GridCell.Tab.0.center/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540008" />
+    <state width="2027" height="376" key="GridCell.Tab.0.left" timestamp="1606073540008">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2027" height="305" key="GridCell.Tab.0.left/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605419907889" />
-    <state width="2027" height="305" key="GridCell.Tab.0.right" timestamp="1605419907890">
+    <state width="2027" height="376" key="GridCell.Tab.0.left/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540008" />
+    <state width="2027" height="376" key="GridCell.Tab.0.right" timestamp="1606073540009">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2027" height="305" key="GridCell.Tab.0.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605419907890" />
+    <state width="2027" height="376" key="GridCell.Tab.0.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
+    <state width="2027" height="376" key="GridCell.Tab.1.bottom" timestamp="1606073540009">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="376" key="GridCell.Tab.1.bottom/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
+    <state width="2027" height="376" key="GridCell.Tab.1.center" timestamp="1606073540009">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="376" key="GridCell.Tab.1.center/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
+    <state width="2027" height="376" key="GridCell.Tab.1.left" timestamp="1606073540009">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="376" key="GridCell.Tab.1.left/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
+    <state width="2027" height="376" key="GridCell.Tab.1.right" timestamp="1606073540009">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="376" key="GridCell.Tab.1.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
     <state x="526" y="201" key="SettingsEditor" timestamp="1605413363817">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="526" y="201" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605413363817" />
+    <state x="578" y="285" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1606071863880">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="578" y="285" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606071863880" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/MailProcessOutlook.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/MailProcessOutlook.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
