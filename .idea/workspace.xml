@@ -20,10 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DataProcessExcel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MailProcessOutlook.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/MailProcessOutlook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataProcessExcel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataProcessExcel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,8 +98,16 @@
       <updated>1605361451196</updated>
       <workItem from="1606102705788" duration="2598000" />
       <workItem from="1606105467382" duration="3388000" />
-      <workItem from="1606276889314" duration="6871000" />
+      <workItem from="1606276889314" duration="8335000" />
     </task>
+    <task id="LOCAL-00001" summary="OUTLOOK的功能基本完成。">
+      <created>1606371676739</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606371676739</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +124,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="OUTLOOK的功能基本完成。" />
+    <option name="LAST_COMMIT_MESSAGE" value="OUTLOOK的功能基本完成。" />
   </component>
   <component name="WindowStateProjectService">
     <state x="617" y="215" width="1091" height="835" key="#Intentions" timestamp="1605414363481">
@@ -137,6 +147,10 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="640" y="315" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606105271342" />
+    <state x="558" y="144" key="CommitChangelistDialog2" timestamp="1606371673894">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="558" y="144" key="CommitChangelistDialog2/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606371673894" />
     <state width="1877" height="321" key="GridCell.Tab.0.bottom" timestamp="1606363190304">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
@@ -178,6 +192,10 @@
     </state>
     <state x="493" y="210" key="SettingsEditor/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606285325870" />
     <state x="526" y="201" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605413363817" />
+    <state x="552" y="299" key="Vcs.Push.Dialog.v2" timestamp="1606371679421">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="552" y="299" key="Vcs.Push.Dialog.v2/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606371679421" />
     <state x="578" y="285" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1606071863880">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
