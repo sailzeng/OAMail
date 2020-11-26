@@ -14,8 +14,9 @@ class MailProcessOutlook(object):
 
     def __init__(self):
         self.outlook_ = None
+        self.ol_namespace_ = None
         self.accounts_ = None
-        self.current_account_ = None
+        self.send_account_ = None
         self.out_info_ = []
         self.read_folder_ = None
         self.read_mails_ = None
@@ -28,90 +29,95 @@ class MailProcessOutlook(object):
     # 独立初始化函数
     def start(self):
         try:
-
-            # 使用MAPI协议连接Outlook
-            self.outlook_ = win32.Dispatch('Outlook.Application').GetNamespace('MAPI')
+            # 使用MAPI连接Outlook
+            self.outlook_ = win32.Dispatch('Outlook.Application')
+            self.ol_namespace_ = self.outlook_.GetNamespace('MAPI')
             # 读取帐号
-            self.accounts_ = self.outlook_.Session.Accounts
+            self.accounts_ = self.ol_namespace_.Session.Accounts
             # 还有一种写法
             # self.outlook_ =  win32.gencache.EnsureDispatch('Excel.Application')
             # self.outlook_.Visible = 0
-            self.outlook_.DisplayAlerts = 0
-
+            self.ol_namespace_.DisplayAlerts = 0
         except Exception as value:
             print("Exception occured, value = ", value)
         return
 
     def quit(self):
-        self.outlook_.Application.Quit()
+        '''
+        退出Outlook,
+        :return:
+        '''
+        self.ol_namespace_.Application.Quit()
         return
 
-    def send_mail(self, sender, receiver, subject, body):
-        send_account = None
+    def get_accounts(self):
+        """
+        返回OUTLOOK账户列表，相关数据查询Account object
+        :return:
+        """
+        accounts = []
         for account in self.accounts_:
-            if account.DisplayName == sender:
-                send_account = account
-                break
+            accounts.append(account)
+        return accounts
+
+    def set_send_account(self, sender):
+        """
+        设置默认的发送人账户，
+        :param sender:
+        :return:
+        """
+        if sender:
+            for account in self.accounts_:
+                if account.DisplayName == sender:
+                    self.send_account_ = account
+                    break
+        else:
+            self.send_account_ = self.accounts_.Item(1)
+        return
+
+    def send_mail(self, receiver, subject, body):
+        """
+        发送邮件
+        :param receiver: 邮件接受者
+        :param subject: 邮件标题
+        :param body: 邮件内容
+        :return: 无
+        """
         # 0: olMailItem
         mail_item = self.outlook_.CreateItem(0)
 
         mail_item.Recipients.Add(receiver)
         mail_item.Subject = subject
-        mail_item.SendUsingAccount = send_account
+        mail_item.SendUsingAccount = self.send_account_
         # 2: Html format
         mail_item.BodyFormat = 2
         mail_item.HTMLBody = body
         mail_item.Send()
         return
 
-    def send_template_mail(self, sender, receiver, subject, template_mail):
-        send_account = None
-        if sender:
-            for account in self.accounts_:
-                if account.DisplayName == sender:
-                    send_account = account
-                    break
-        else:
-            send_account = self.accounts_.Item(1)
-        ol = None
-        ol = win32.Dispatch('Outlook.Application')
-        # 0: olMailItem
-        new_mail = ol.CreateItem(0)
+    def send_mail_from_copy(self, receiver, subject, copy_mail):
+        """
+        根据模版邮件发送
 
-        new_mail.Recipients.Add(receiver)
-        new_mail.Subject = subject
-        new_mail.SendUsingAccount = send_account
+        """
+        # 0: olMailItem
+        new_mail = self.outlook_.CreateItem(0)
         # 2: Html format
         new_mail.BodyFormat = 2
-        new_mail.HTMLBody = template_mail.HTMLBody
-        # new_mail.Attachments = template_mail.Attachments
+        new_mail = copy_mail.Copy()
+        new_mail.Recipients.Add(receiver)
+        new_mail.Subject = subject
+        new_mail.SendUsingAccount = self.send_account_
         new_mail.Send()
         return
 
-    @staticmethod
-    def print_mail(mail):
-        print('接收时间：{}'.format(str(mail.ReceivedTime)[:-6]))
-        print('发件人：{}'.format(mail.SenderName))
-        print('收件人：{}'.format(mail.To))
-        print('抄送人：{}'.format(mail.CC))
-        print('主题：{}'.format(mail.Subject))
-        print('邮件正文内容：{}'.format(mail.Body))
-        print('邮件附件数量：{}'.format(mail.Attachments.Count))
-        print('邮件MessageID：{}'.format(mail.EntryID))
-        print('会话主题：{}'.format(mail.ConversationTopic))
-        print('会话ID：{}'.format(mail.ConversationID))
-        print('会话记录相对位置：{}'.format(mail.ConversationIndex))
-        attachment = mail.Attachments
-        for each in attachment:
-            # save_attachment_path = os.getcwd()  # 保存附件到当前路径
-            # each.SaveAsFile(r'{}\{}'.format(save_attachment_path, each.FileName))
-            print('附件（{}）保存完毕'.format(each.FileName))
-        return
-
-    """连接Outlook邮箱，读取收件箱内的邮件内容"""
-
-    def read_folder(self, read_account, folder):
-
+    def read_account_folder(self, read_account, folder):
+        """
+        读取OUTLOOK的某个帐号的folder，（收件箱等）
+        :param read_account: 读取帐号
+        :param folder: OutlookFolder.FOLDER_OUTBOX枚举值
+        :return: True，成功，False 失败
+        """
         # OLE 的很多枚举值
         # olFolderDeletedItems 3 已发送
         # olFolderOutbox 4 发件箱
@@ -133,15 +139,14 @@ class MailProcessOutlook(object):
         self.read_folder_ = None
         # 如果不指定账号，读取默认邮箱
         if not read_account:
-            self.read_folder_ = self.outlook_.GetDefaultFolder(ol_folder)
+            self.read_folder_ = self.ol_namespace_.GetDefaultFolder(ol_folder)
         else:
             for account in self.accounts_:
                 if read_account == account.DeliveryStore.DisplayName:
-                    self.read_folder_ = self.outlook_.Folders(account.DeliveryStore.DisplayName)
+                    self.read_folder_ = self.ol_namespace_.Folders(account.DeliveryStore.DisplayName)
                     self.out_info_.append("Use account{}".format(account.DeliveryStore.DisplayName))
         if not self.read_folder_:
             return -1
-
         # 获取收件箱下的所有邮件
         self.read_mails_ = self.read_folder_.Items
         # 排序，不同的邮箱用不同的排序方式
@@ -155,21 +160,25 @@ class MailProcessOutlook(object):
             self.sort_mail('[LastModificationTime]', True)
         else:
             assert False
-
-        # 读取收件箱内前3封邮件的所有信息（下标从1开始）
-        for index in range(1, 4):
-            print('正在读取第[{}]封邮件...'.format(index))
-            mail = self.read_mails_.Item(index)
-            # 保存邮件中的附件，如果没有附件不会执行也不会产生异常
-            MailProcessOutlook.print_mail(mail)
         return 0
 
     def sort_mail(self, property_name, descending):
+        '''
+
+        :param property_name:
+        :param descending:
+        :return:
+        '''
         self.read_mails_.Sort(property_name, descending)
         return
 
-    # 读取目录的邮件
     def read_folder_mail(self, filter_subject, max_read_num):
+        """
+        读取folder的邮件列表，前面应该先调用read_folder
+        :param filter_subject: 过滤标题的文本
+        :param max_read_num: 最大的读取邮件数量
+        :return: 读取的邮件列表
+        """
         read_num = 0
         read_list = []
         mail = None
@@ -182,7 +191,7 @@ class MailProcessOutlook(object):
             # 数量过滤
             if max_read_num > 0 and read_num < max_read_num:
                 break
-        return read_num, read_list
+        return read_list
 
     def print_folder_mail(self, filter_subject, max_read_num):
         read_num = 0
@@ -199,13 +208,52 @@ class MailProcessOutlook(object):
                 break
         return
 
+    def print_accounts(self):
+        accounts = self.get_accounts()
+        num = 0
+        for account in accounts:
+            print('Account No：{}'.format(num))
+            MailProcessOutlook.print_account(account)
+            num += 1
+        return
+
+    @staticmethod
+    def print_mail(mail):
+        print('ReceivedTime：{}'.format(str(mail.ReceivedTime)[:-6]))
+        print('SenderName：{}'.format(mail.SenderName))
+        print('To：{}'.format(mail.To))
+        print('CC：{}'.format(mail.CC))
+        print('Subject：{}'.format(mail.Subject))
+        print('Body：{}'.format(mail.Body))
+        print('邮件附件数量：{}'.format(mail.Attachments.Count))
+        print('邮件MessageID：{}'.format(mail.EntryID))
+        print('会话主题：{}'.format(mail.ConversationTopic))
+        print('会话ID：{}'.format(mail.ConversationID))
+        print('会话记录相对位置：{}'.format(mail.ConversationIndex))
+        attachment = mail.Attachments
+        for each in attachment:
+            # save_attachment_path = os.getcwd()  # 保存附件到当前路径
+            # each.SaveAsFile(r'{}\{}'.format(save_attachment_path, each.FileName))
+            print('附件（{}）保存完毕'.format(each.FileName))
+        return
+
+    @staticmethod
+    def print_account(account):
+        print('AccountType：{}'.format(account.AccountType))
+        print('CurrentUser ：{}'.format(account.CurrentUser))
+        print('DisplayName ：{}'.format(account.DisplayName))
+        print('UserName：{}'.format(account.UserName))
+        return
+
 
 if __name__ == '__main__':
     outlook = MailProcessOutlook()
     outlook.start()
-    outlook.read_folder(None, MailProcessOutlook.OutlookFolder.FOLDER_DRAFTS)
+    outlook.read_account_folder(None, MailProcessOutlook.OutlookFolder.FOLDER_DRAFTS)
     outlook.print_folder_mail(None, 3)
-    mail_num, mail_list = outlook.read_folder_mail("如何", 3)
-    print("Mail number {}".format(mail_num))
-    outlook.send_template_mail(None, "someone@qq.com" ,"TEST",mail_list[0])
+    mail_list = outlook.read_folder_mail(None, 3)
+    print("Mail number {}".format(len(mail_list)))
+    outlook.print_accounts()
+    # outlook.set_send_account(None)
+    # outlook.send_mail_from_copy("halozhao@tencent.com", "TEST", mail_list[0])
     # outlook.quit()

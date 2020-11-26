@@ -20,6 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/DataProcessExcel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MailProcessOutlook.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/MailProcessOutlook.py" afterDir="false" />
     </list>
@@ -38,6 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="3c0fd29b-afa6-4426-a09b-2fb5045f6e17" />
   <component name="ProjectId" id="1kHdScylEM1oM68ejD7ZElq5Bmo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -46,7 +49,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
   </component>
   <component name="RunManager">
     <configuration name="MailProcessOutlook" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -61,6 +71,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/MailProcessOutlook.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -77,6 +88,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="" />
@@ -84,8 +98,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605361451196</updated>
+      <workItem from="1606102705788" duration="2598000" />
+      <workItem from="1606105467382" duration="3388000" />
+      <workItem from="1606276889314" duration="6871000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -104,25 +124,38 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="617" y="215" width="1091" height="835" key="#Intentions/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605414363481" />
-    <state x="731" y="357" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605361775063">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="656" y="171" key="#MailProcessOutlook" timestamp="1606103280125">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
+    <state x="656" y="171" key="#MailProcessOutlook/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606103280125" />
+    <state x="685" y="372" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606371445879">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="685" y="372" key="#com.intellij.fileTypes.FileTypeChooser/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606371445879" />
     <state x="731" y="357" key="#com.intellij.fileTypes.FileTypeChooser/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605361775063" />
-    <state width="2027" height="376" key="GridCell.Tab.0.bottom" timestamp="1606073540009">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="640" y="315" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1606105271342">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
+    <state x="640" y="315" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606105271342" />
+    <state width="1877" height="321" key="GridCell.Tab.0.bottom" timestamp="1606363190304">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1877" height="321" key="GridCell.Tab.0.bottom/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606363190304" />
     <state width="2027" height="376" key="GridCell.Tab.0.bottom/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
-    <state width="2027" height="376" key="GridCell.Tab.0.center" timestamp="1606073540008">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="321" key="GridCell.Tab.0.center" timestamp="1606363190304">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
+    <state width="1877" height="321" key="GridCell.Tab.0.center/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606363190304" />
     <state width="2027" height="376" key="GridCell.Tab.0.center/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540008" />
-    <state width="2027" height="376" key="GridCell.Tab.0.left" timestamp="1606073540008">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="321" key="GridCell.Tab.0.left" timestamp="1606363190304">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
+    <state width="1877" height="321" key="GridCell.Tab.0.left/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606363190304" />
     <state width="2027" height="376" key="GridCell.Tab.0.left/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540008" />
-    <state width="2027" height="376" key="GridCell.Tab.0.right" timestamp="1606073540009">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="321" key="GridCell.Tab.0.right" timestamp="1606363190304">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
+    <state width="1877" height="321" key="GridCell.Tab.0.right/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606363190304" />
     <state width="2027" height="376" key="GridCell.Tab.0.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
     <state width="2027" height="376" key="GridCell.Tab.1.bottom" timestamp="1606073540009">
       <screen x="0" y="0" width="2048" height="1112" />
@@ -140,29 +173,21 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="2027" height="376" key="GridCell.Tab.1.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
-    <state x="526" y="201" key="SettingsEditor" timestamp="1605413363817">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="493" y="210" key="SettingsEditor" timestamp="1606285325870">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
+    <state x="493" y="210" key="SettingsEditor/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606285325870" />
     <state x="526" y="201" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605413363817" />
     <state x="578" y="285" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1606071863880">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="578" y="285" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606071863880" />
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1606292549605">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606292549605" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/MailProcessOutlook.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/MailProcessOutlook.py</url>
-          <line>67</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/OAMail$MailProcessOutlook.coverage" NAME="MailProcessOutlook Coverage Results" MODIFIED="1606363190286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
