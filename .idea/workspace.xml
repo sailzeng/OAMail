@@ -98,7 +98,7 @@
       <updated>1605361451196</updated>
       <workItem from="1606102705788" duration="2598000" />
       <workItem from="1606105467382" duration="3388000" />
-      <workItem from="1606276889314" duration="8335000" />
+      <workItem from="1606276889314" duration="10798000" />
     </task>
     <task id="LOCAL-00001" summary="OUTLOOK的功能基本完成。">
       <created>1606371676739</created>
@@ -107,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606371676739</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="稍微写了两行EXCEL的代码。">
+      <created>1606374659833</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606374659833</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,7 +134,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="OUTLOOK的功能基本完成。" />
-    <option name="LAST_COMMIT_MESSAGE" value="OUTLOOK的功能基本完成。" />
+    <MESSAGE value="稍微写了两行EXCEL的代码。" />
+    <option name="LAST_COMMIT_MESSAGE" value="稍微写了两行EXCEL的代码。" />
   </component>
   <component name="WindowStateProjectService">
     <state x="617" y="215" width="1091" height="835" key="#Intentions" timestamp="1605414363481">
@@ -147,10 +155,10 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="640" y="315" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606105271342" />
-    <state x="558" y="144" key="CommitChangelistDialog2" timestamp="1606371673894">
+    <state x="558" y="144" key="CommitChangelistDialog2" timestamp="1606374657658">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="558" y="144" key="CommitChangelistDialog2/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606371673894" />
+    <state x="558" y="144" key="CommitChangelistDialog2/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606374657658" />
     <state width="1877" height="321" key="GridCell.Tab.0.bottom" timestamp="1606363190304">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
