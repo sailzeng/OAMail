@@ -20,6 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/OAMail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OAMail.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataProcessExcel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataProcessExcel.py" afterDir="false" />
     </list>
@@ -34,6 +36,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -195,11 +200,11 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="2027" height="376" key="GridCell.Tab.1.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
-    <state x="493" y="210" key="SettingsEditor" timestamp="1606285325870">
-      <screen x="0" y="0" width="1920" height="1160" />
+    <state x="515" y="171" key="SettingsEditor" timestamp="1606568808728">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="493" y="210" key="SettingsEditor/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606285325870" />
-    <state x="526" y="201" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605413363817" />
+    <state x="515" y="171" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606568808728" />
     <state x="552" y="299" key="Vcs.Push.Dialog.v2" timestamp="1606371679421">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
@@ -212,8 +217,5 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606292549605" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/OAMail$MailProcessOutlook.coverage" NAME="MailProcessOutlook Coverage Results" MODIFIED="1606363190286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
