@@ -79,9 +79,9 @@ class DataProcessExcel(object):
             return False
         return True
 
-    def used_range_row_col(self):
+    def used_range_coord(self):
         """
-        取得UsedRange的起始行号，列号，以及占用的行总数，列总数
+        取得UsedRange的各种坐标，包括起始行号，列号，以及占用的行总数，列总数
         注意UsedRange并不一定是从0，0开始的
         :return:UsedRange的行起始，列起始，行总数，列总数
         """
@@ -102,7 +102,7 @@ class DataProcessExcel(object):
         if not used_range:
             return 0, 0, 0, 0, []
         else:
-            row_start, column_start, row_count, column_count = self.used_range_row_col()
+            row_start, column_start, row_count, column_count = self.used_range_coord()
             ret_list = []
             i = 0
             j = 0
@@ -122,18 +122,22 @@ class DataProcessExcel(object):
     @staticmethod
     def column_name(column_num):
         """"""
-        n = column_num - 1
+        assert column_num > 0
+        n = column_num
         lst = []
         while True:
+            if n > 0:
+                # EXCEL 奇特的规则导致的这个地方，没有0
+                n -= 1
             m = n % 26
             n //= 26
             lst.append(chr(m + ord('A')))
-            if n > 0:
+            if n <= 0:
                 break
         lst.reverse()
         return "".join(lst)
 
-    def range(self, cell1: str, cell2: str):
+    def get_range(self, cell1: str, cell2: str):
         return self.work_sheet_.Range(cell1, cell2)
 
     def range(self, cell1_row: int, cell1_column: int, cell2_row: int, cell2_column: int):
@@ -141,6 +145,19 @@ class DataProcessExcel(object):
         cell2 = str(cell2_row) + DataProcessExcel.column_name(cell2_column)
         return self.work_sheet_.Range(cell1, cell2)
 
+    def range(self, cell1: str, cell2: str):
+        get_range = self.range(cell1, cell2)
+        row_count = get_range.Rows.Count
+        column_count = get_range.Columns.Count
+        row_start = get_range.Row
+        column_start = get_range.Column
+        return row_start, column_start, row_count, column_count
 
 if __name__ == '__main__':
-    print("Hello world!")
+    print("Hello world!{}".format(__file__))
+    print("column_name {} {}".format(1, DataProcessExcel.column_name(1)))
+    print("column_name {} {}".format(26, DataProcessExcel.column_name(26)))
+    print("column_name {} {}".format(27, DataProcessExcel.column_name(27)))
+    print("column_name {} {}".format(52, DataProcessExcel.column_name(52)))
+    print("column_name {} {}".format(200, DataProcessExcel.column_name(200)))
+    print("column_name {} {}".format(888, DataProcessExcel.column_name(888)))
