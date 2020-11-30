@@ -13,31 +13,31 @@ class MailProcessOutlook(object):
         FOLDER_DRAFTS = 4
 
     def __init__(self):
-        self.outlook_ = None
-        self.ol_namespace_ = None
-        self.accounts_ = None
-        self.send_account_ = None
-        self.out_info_ = []
-        self.read_folder_ = None
-        self.read_mails_ = None
+        self._outlook_app = None
+        self._ol_namespace = None
+        self._accounts = None
+        self._send_account = None
+        self._out_info = []
+        self._read_folder = None
+        self._read_mails = None
 
     # 清理所有的输出信息
     def clear_out_info(self):
-        self.out_info_.clear()
+        self._out_info.clear()
         return
 
     # 独立初始化函数
     def start(self):
         try:
             # 使用MAPI连接Outlook
-            self.outlook_ = win32.Dispatch('Outlook.Application')
-            self.ol_namespace_ = self.outlook_.GetNamespace('MAPI')
+            self._outlook_app = win32.Dispatch('Outlook.Application')
+            self._ol_namespace = self._outlook_app.GetNamespace('MAPI')
             # 读取帐号
-            self.accounts_ = self.ol_namespace_.Session.Accounts
+            self._accounts = self._ol_namespace.Session.Accounts
             # 还有一种写法
-            # self.outlook_ =  win32.gencache.EnsureDispatch('Excel.Application')
-            # self.outlook_.Visible = 0
-            self.ol_namespace_.DisplayAlerts = 0
+            # self._outlook_app =  win32.gencache.EnsureDispatch('Excel.Application')
+            # self._outlook_app.Visible = 0
+            self._ol_namespace.DisplayAlerts = 0
         except Exception as value:
             print("Exception occured, value = ", value)
         return
@@ -47,7 +47,7 @@ class MailProcessOutlook(object):
         退出Outlook,
         :return:
         '''
-        self.ol_namespace_.Application.Quit()
+        self._ol_namespace.Application.Quit()
         return
 
     def get_accounts(self):
@@ -56,7 +56,7 @@ class MailProcessOutlook(object):
         :return:
         """
         accounts = []
-        for account in self.accounts_:
+        for account in self._accounts:
             accounts.append(account)
         return accounts
 
@@ -67,12 +67,12 @@ class MailProcessOutlook(object):
         :return:
         """
         if sender:
-            for account in self.accounts_:
+            for account in self._accounts:
                 if account.DisplayName == sender:
-                    self.send_account_ = account
+                    self._send_account = account
                     break
         else:
-            self.send_account_ = self.accounts_.Item(1)
+            self._send_account = self._accounts.Item(1)
         return
 
     def send_mail(self, receiver, subject, body):
@@ -84,11 +84,11 @@ class MailProcessOutlook(object):
         :return: 无
         """
         # 0: olMailItem
-        mail_item = self.outlook_.CreateItem(0)
+        mail_item = self._outlook_app.CreateItem(0)
 
         mail_item.Recipients.Add(receiver)
         mail_item.Subject = subject
-        mail_item.SendUsingAccount = self.send_account_
+        mail_item.SendUsingAccount = self._send_account
         # 2: Html format
         mail_item.BodyFormat = 2
         mail_item.HTMLBody = body
@@ -101,13 +101,13 @@ class MailProcessOutlook(object):
 
         """
         # 0: olMailItem
-        new_mail = self.outlook_.CreateItem(0)
+        new_mail = self._outlook_app.CreateItem(0)
         # 2: Html format
         new_mail.BodyFormat = 2
         new_mail = copy_mail.Copy()
         new_mail.Recipients.Add(receiver)
         new_mail.Subject = subject
-        new_mail.SendUsingAccount = self.send_account_
+        new_mail.SendUsingAccount = self._send_account
         new_mail.Send()
         return
 
@@ -136,19 +136,19 @@ class MailProcessOutlook(object):
         else:
             assert False
 
-        self.read_folder_ = None
+        self._read_folder = None
         # 如果不指定账号，读取默认邮箱
         if not read_account:
-            self.read_folder_ = self.ol_namespace_.GetDefaultFolder(ol_folder)
+            self._read_folder = self._ol_namespace.GetDefaultFolder(ol_folder)
         else:
-            for account in self.accounts_:
+            for account in self._accounts:
                 if read_account == account.DeliveryStore.DisplayName:
-                    self.read_folder_ = self.ol_namespace_.Folders(account.DeliveryStore.DisplayName)
-                    self.out_info_.append("Use account{}".format(account.DeliveryStore.DisplayName))
-        if not self.read_folder_:
+                    self._read_folder = self._ol_namespace.Folders(account.DeliveryStore.DisplayName)
+                    self._out_info.append("Use account{}".format(account.DeliveryStore.DisplayName))
+        if not self._read_folder:
             return -1
         # 获取收件箱下的所有邮件
-        self.read_mails_ = self.read_folder_.Items
+        self._read_mails = self._read_folder.Items
         # 排序，不同的邮箱用不同的排序方式
         if folder == self.OutlookFolder.FOLDER_OUTBOX:
             self.sort_mail('[SentOn]', True)
@@ -169,7 +169,7 @@ class MailProcessOutlook(object):
         :param descending:
         :return:
         '''
-        self.read_mails_.Sort(property_name, descending)
+        self._read_mails.Sort(property_name, descending)
         return
 
     def read_folder_mail(self, filter_subject, max_read_num):
@@ -182,7 +182,7 @@ class MailProcessOutlook(object):
         read_num = 0
         read_list = []
         mail = None
-        for mail in self.read_mails_:
+        for mail in self._read_mails:
             # 标题过滤
             if filter_subject and -1 == mail.Subject.find(filter_subject):
                 continue
@@ -197,7 +197,7 @@ class MailProcessOutlook(object):
         read_num = 0
         read_list = []
         mail = None
-        for mail in self.read_mails_:
+        for mail in self._read_mails:
             # 标题过滤
             if filter_subject and -1 == mail.Subject.find(filter_subject):
                 continue
