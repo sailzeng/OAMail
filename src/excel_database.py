@@ -2,7 +2,7 @@ import win32com.client as win32
 import os
 
 
-class DataProcessExcel(object):
+class ExcelDataBase(object):
     def __init__(self):
         self._excel_app = None
         self._work_book = None
@@ -97,7 +97,7 @@ class DataProcessExcel(object):
             return 0, 0, 0, 0, []
         else:
             row_start, column_start, row_count, column_count = \
-                DataProcessExcel._range_coord(read_range)
+                ExcelDataBase._range_coord(read_range)
             ret_list = []
             i = 0
             j = 0
@@ -138,7 +138,7 @@ class DataProcessExcel(object):
         lst = []
         while True:
             if n > 0:
-                # EXCEL 奇特的规则导致的这个地方，没有0
+                # EXCEL 奇特的规则导致的这个地方，没有0，和一般的转码不太一样
                 n -= 1
             m = n % 26
             n //= 26
@@ -152,8 +152,8 @@ class DataProcessExcel(object):
         return self._work_sheet.Range(cell1, cell2)
 
     def range(self, cell1_row: int, cell1_column: int, cell2_row: int, cell2_column: int):
-        cell1 = str(cell1_row) + DataProcessExcel.column_name(cell1_column)
-        cell2 = str(cell2_row) + DataProcessExcel.column_name(cell2_column)
+        cell1 = str(cell1_row) + ExcelDataBase.column_name(cell1_column)
+        cell2 = str(cell2_row) + ExcelDataBase.column_name(cell2_column)
         return self._work_sheet.Range(cell1, cell2)
 
     def range_coord(self, cell1: str, cell2: str = None):
@@ -164,11 +164,12 @@ class DataProcessExcel(object):
         get_range = self.range(cell1, cell2)
         return self._range_data(get_range)
 
+
 if __name__ == '__main__':
     print("Hello world!{}".format(__file__))
-    print("column_name {} {}".format(1, DataProcessExcel.column_name(1)))
-    print("column_name {} {}".format(26, DataProcessExcel.column_name(26)))
-    print("column_name {} {}".format(27, DataProcessExcel.column_name(27)))
-    print("column_name {} {}".format(52, DataProcessExcel.column_name(52)))
-    print("column_name {} {}".format(200, DataProcessExcel.column_name(200)))
-    print("column_name {} {}".format(888, DataProcessExcel.column_name(888)))
+    print("column_name {} {}".format(1, ExcelDataBase.column_name(1)))
+    print("column_name {} {}".format(26, ExcelDataBase.column_name(26)))
+    print("column_name {} {}".format(27, ExcelDataBase.column_name(27)))
+    print("column_name {} {}".format(52, ExcelDataBase.column_name(52)))
+    print("column_name {} {}".format(200, ExcelDataBase.column_name(200)))
+    print("column_name {} {}".format(888, ExcelDataBase.column_name(888)))

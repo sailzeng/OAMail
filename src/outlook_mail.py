@@ -4,7 +4,7 @@ import enum
 
 
 # 邮件处理，处理OUTLOOK
-class MailProcessOutlook(object):
+class OutlookMail(object):
     @enum.unique
     class OutlookFolder(enum.Enum):
         FOLDER_OUTBOX = 1
@@ -201,7 +201,7 @@ class MailProcessOutlook(object):
             # 标题过滤
             if filter_subject and -1 == mail.Subject.find(filter_subject):
                 continue
-            MailProcessOutlook.print_mail(mail)
+            OutlookMail.print_mail(mail)
             read_num += 1
             # 数量过滤
             if max_read_num > 0 and read_num < max_read_num:
@@ -213,7 +213,7 @@ class MailProcessOutlook(object):
         num = 0
         for account in accounts:
             print('Account No：{}'.format(num))
-            MailProcessOutlook.print_account(account)
+            OutlookMail.print_account(account)
             num += 1
         return
 
@@ -222,6 +222,7 @@ class MailProcessOutlook(object):
         print('ReceivedTime：{}'.format(str(mail.ReceivedTime)[:-6]))
         print('SenderName：{}'.format(mail.SenderName))
         print('To：{}'.format(mail.To))
+        # 有的邮件没有CC
         print('CC：{}'.format(mail.CC))
         print('Subject：{}'.format(mail.Subject))
         print('Body：{}'.format(mail.Body))
@@ -247,9 +248,9 @@ class MailProcessOutlook(object):
 
 
 if __name__ == '__main__':
-    outlook = MailProcessOutlook()
+    outlook = OutlookMail()
     outlook.start()
-    outlook.read_account_folder(None, MailProcessOutlook.OutlookFolder.FOLDER_DRAFTS)
+    outlook.read_account_folder(None, OutlookMail.OutlookFolder.FOLDER_DRAFTS)
     outlook.print_folder_mail(None, 3)
     mail_list = outlook.read_folder_mail(None, 3)
     print("Mail number {}".format(len(mail_list)))

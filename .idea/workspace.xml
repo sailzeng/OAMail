@@ -20,11 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/OAMail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OAMail.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/batch_process_send.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataProcessExcel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataProcessExcel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MailProcessOutlook.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/MailProcessOutlook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataProcessExcel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/excel_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MailProcessOutlook.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/outlook_mail.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,8 +64,8 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
   </component>
-  <component name="RunManager" selected="Python.DataProcessExcel">
-    <configuration name="DataProcessExcel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.excel_database">
+    <configuration name="excel_database" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="OAMail" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -79,7 +78,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/DataProcessExcel.py" />
+      <option name="SCRIPT_NAME" value="E:\Courage\Python\OAMail\src\excel_database.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -88,7 +87,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="MailProcessOutlook" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="outlook_mail" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="OAMail" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -101,7 +100,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/MailProcessOutlook.py" />
+      <option name="SCRIPT_NAME" value="E:\Courage\Python\OAMail\src\outlook_mail.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -112,8 +111,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.DataProcessExcel" />
-        <item itemvalue="Python.MailProcessOutlook" />
+        <item itemvalue="Python.excel_database" />
+        <item itemvalue="Python.outlook_mail" />
       </list>
     </recent_temporary>
   </component>
@@ -133,6 +132,7 @@
       <workItem from="1606276889314" duration="10798000" />
       <workItem from="1606708248583" duration="7972000" />
       <workItem from="1606724382763" duration="5279000" />
+      <workItem from="1606803521902" duration="7180000" />
     </task>
     <task id="LOCAL-00001" summary="OUTLOOK的功能基本完成。">
       <created>1606371676739</created>
@@ -250,16 +250,5 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606292549605" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/DataProcessExcel.py</url>
-          <line>169</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
