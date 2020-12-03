@@ -1,15 +1,18 @@
-#import execl_database
-#import outlook_mail
+# import office.execl_database
+# import office.outlook_mail
+
 
 
 class BatchProcessSend(object):
     """
     批处理进行发送处理
     """
+
     class SearchReplaceColumn(object):
         """
         搜索替换的列号
         """
+
         def __init__(self):
             self._column_search = 0
             self._column_replace = 0
@@ -18,6 +21,7 @@ class BatchProcessSend(object):
         """
         搜索替换的语句
         """
+
         def __init__(self):
             self._search = ""
             self._replace = ""
@@ -41,7 +45,7 @@ class BatchProcessSend(object):
         self._sender_list = []
         self._to_list = []
         self._cc_list = []
-        self._subject_list =[]
+        self._subject_list = []
         self._body_list = []
         self._attachments_list = []
         # Body 文本替换列表
@@ -49,6 +53,7 @@ class BatchProcessSend(object):
 
         self._outlook = OutlookMail()
         self._excel = ExcelDataBase()
+
 
 if __name__ == '__main__':
     pass

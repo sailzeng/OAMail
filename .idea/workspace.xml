@@ -20,10 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/office/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/OAMail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OAMail.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/batch_process_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/batch_process_send.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/excel_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/office/excel_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/outlook_mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/office/outlook_mail.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +67,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Courage\Python\OAMail\src\office" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.excel_database">
     <configuration name="excel_database" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="OAMail" />
@@ -78,7 +86,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="E:\Courage\Python\OAMail\src\excel_database.py" />
+      <option name="SCRIPT_NAME" value="E:\Courage\Python\OAMail\src\office\excel_database.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -100,7 +108,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="E:\Courage\Python\OAMail\src\outlook_mail.py" />
+      <option name="SCRIPT_NAME" value="E:\Courage\Python\OAMail\src\office\outlook_mail.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
