@@ -13,12 +13,13 @@ class ExcelDataBase(object):
         self._is_open = False
         self._is_new = False
 
-    def start(self):
+    def start(self) -> bool:
         try:
             self._excel_app = win32.Dispatch('Excel.Application')
         except Exception as value:
             print("Exception occured, value = ", value)
-        return
+            return False
+        return True
 
     def quit(self):
         """
@@ -28,7 +29,7 @@ class ExcelDataBase(object):
         self._excel_app.Quit()
         return
 
-    def open_book(self, file_name, not_exist_new):
+    def open_book(self, file_name, not_exist_new) -> bool:
         """        """
         # 如果指向的文件不存在，则需要新建一个
         if os.path.exists(file_name) and os.path.isfile(file_name):
@@ -63,17 +64,25 @@ class ExcelDataBase(object):
         self._is_new = False
         return
 
-    def sheet_count(self):
+    def sheets_count(self):
         count = self._work_sheets.Count
         return count
 
-    def load_sheet(self, sheet_index: int, pre_read_data: bool):
+    def sheets_name(self):
+        name_list = []
+        count = self._work_sheets.Count
+        i = 0
+        while i < count:
+            name_list.append(self._work_book.Worksheets(i+1).Name)
+        return name_list
+
+    def load_sheet(self, sheet_index: int):
         self._work_sheet = self._work_book.Worksheets(sheet_index)
         if not self._work_book:
             return False
         return True
 
-    def load_sheet(self, sheet_name: str, pre_read_data: bool):
+    def load_sheet(self, sheet_name: str):
         self._work_sheet = self.active_book_.Worksheets(sheet_name)
         if not self._work_book:
             return False

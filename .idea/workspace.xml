@@ -19,14 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/office/__init__.py" afterDir="false" />
+    <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="改变了一下目录结构。包的概念还是没搞明白。">
+      <change afterPath="$PROJECT_DIR$/source/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/OAMail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OAMail.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/batch_process_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/batch_process_send.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/excel_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/office/excel_database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/outlook_mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/office/outlook_mail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/batch_process_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/batch_process_send.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/office/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/office/excel_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/excel_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/office/outlook_mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/outlook_mail.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,10 +65,12 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Courage\Python\OAMail\source" />
+      <recent name="E:\Courage\Python\OAMail" />
       <recent name="E:\Courage\Python\OAMail\src\office" />
     </key>
   </component>
@@ -164,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606967808322</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="改变了一下目录结构。包的概念还是没搞明白。">
+      <created>1607019970963</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607019970963</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +195,8 @@
     <MESSAGE value="OUTLOOK的功能基本完成。" />
     <MESSAGE value="稍微写了两行EXCEL的代码。" />
     <MESSAGE value="按Python规范对文件改名。&#10;增加批处理的类。要动真格的了。" />
-    <option name="LAST_COMMIT_MESSAGE" value="按Python规范对文件改名。&#10;增加批处理的类。要动真格的了。" />
+    <MESSAGE value="改变了一下目录结构。包的概念还是没搞明白。" />
+    <option name="LAST_COMMIT_MESSAGE" value="改变了一下目录结构。包的概念还是没搞明白。" />
   </component>
   <component name="WindowStateProjectService">
     <state x="617" y="215" width="1091" height="835" key="#Intentions" timestamp="1605414363481">
@@ -250,15 +260,16 @@
     </state>
     <state width="1877" height="396" key="GridCell.Tab.1.right/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606729706050" />
     <state width="2027" height="376" key="GridCell.Tab.1.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
-    <state x="515" y="171" key="SettingsEditor" timestamp="1606568808728">
+    <state x="515" y="171" key="SettingsEditor" timestamp="1607166911166">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="493" y="210" key="SettingsEditor/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606285325870" />
-    <state x="515" y="171" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606568808728" />
-    <state x="552" y="299" key="Vcs.Push.Dialog.v2" timestamp="1606371679421">
-      <screen x="0" y="0" width="1920" height="1160" />
+    <state x="515" y="171" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1607166911166" />
+    <state x="589" y="287" key="Vcs.Push.Dialog.v2" timestamp="1607019973838">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="552" y="299" key="Vcs.Push.Dialog.v2/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606371679421" />
+    <state x="589" y="287" key="Vcs.Push.Dialog.v2/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1607019973838" />
     <state x="578" y="285" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1606071863880">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
