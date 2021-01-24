@@ -73,7 +73,7 @@ class ExcelDataBase(object):
         count = self._work_sheets.Count
         i = 0
         while i < count:
-            name_list.append(self._work_book.Worksheets(i+1).Name)
+            name_list.append(self._work_book.Worksheets(i + 1).Name)
         return name_list
 
     def load_sheet(self, sheet_index: int):
@@ -83,13 +83,13 @@ class ExcelDataBase(object):
         return True
 
     def load_sheet(self, sheet_name: str):
-        self._work_sheet = self.active_book_.Worksheets(sheet_name)
+        self._work_sheet = self._work_book.Worksheets(sheet_name)
         if not self._work_book:
             return False
         return True
 
     @staticmethod
-    def _range_coord(self, read_range):
+    def _range_coord(read_range):
         """"""
         row_count = read_range.Rows.Count
         column_count = read_range.Columns.Count
@@ -100,7 +100,7 @@ class ExcelDataBase(object):
         return row_start, column_start, row_count, column_count
 
     @staticmethod
-    def _range_data(self, read_range):
+    def _range_data(read_range):
         """"""
         if not read_range:
             return 0, 0, 0, 0, []
@@ -131,7 +131,7 @@ class ExcelDataBase(object):
         else:
             return self._range_coord(used_range)
 
-    def used_range_data(self, read_range):
+    def used_range_data(self):
         used_rg = self._work_sheet.UsedRange
         return self._range_data(used_rg)
 

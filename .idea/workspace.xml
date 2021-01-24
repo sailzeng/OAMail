@@ -19,14 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="改变了一下目录结构。包的概念还是没搞明白。">
-      <change afterPath="$PROJECT_DIR$/source/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/OAMail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OAMail.iml" afterDir="false" />
+    <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="主控类的思路感觉没有想好。有点复杂了。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/batch_process_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/batch_process_send.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/office/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/office/excel_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/excel_database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/office/outlook_mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/outlook_mail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/batch_process_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/batch_process_send.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/office/excel_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/excel_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/office/outlook_mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/outlook_mail.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +62,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -212,10 +209,11 @@
     </state>
     <state x="685" y="372" key="#com.intellij.fileTypes.FileTypeChooser/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606371445879" />
     <state x="731" y="357" key="#com.intellij.fileTypes.FileTypeChooser/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1605361775063" />
-    <state x="640" y="315" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1606105271342">
-      <screen x="0" y="0" width="1920" height="1160" />
+    <state x="683" y="302" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1611400085071">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="640" y="315" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606105271342" />
+    <state x="683" y="302" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1611400085071" />
     <state x="558" y="144" key="CommitChangelistDialog2" timestamp="1606967806474">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
@@ -260,11 +258,11 @@
     </state>
     <state width="1877" height="396" key="GridCell.Tab.1.right/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606729706050" />
     <state width="2027" height="376" key="GridCell.Tab.1.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1606073540009" />
-    <state x="515" y="171" key="SettingsEditor" timestamp="1607166911166">
+    <state x="515" y="171" key="SettingsEditor" timestamp="1611491800932">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="493" y="210" key="SettingsEditor/1920.-484.1200.1880/0.0.1920.1160@0.0.1920.1160" timestamp="1606285325870" />
-    <state x="515" y="171" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1607166911166" />
+    <state x="515" y="171" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1611491800932" />
     <state x="589" y="287" key="Vcs.Push.Dialog.v2" timestamp="1607019973838">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

@@ -11,56 +11,61 @@ class BatchProcessSend(object):
         """
         搜索替换的列号
         """
+
         def __init__(self):
             self._column_search = 0
             self._column_replace = 0
 
     class BodyReplaceStr(object):
         """
-        搜索替换的语句
+        搜索替换的字符串
         """
+
         def __init__(self):
             self._search = ""
             self._replace = ""
 
+    class SendMailInfo(object):
+        """
+        搜索替换的字符串
+        """
+
+        def __init__(self):
+            self.sender = ""
+            self.to = ""
+            self.cc = ""
+            self.subject = ""
+            self.body = ""
+            self.attachment_list = []
+
     def __init__(self):
-        # EXCEL 表的信息
+        # EXCEL 表的信息,根据EXCEL得到
         self._sheets_name = []
         self._sheet_row_start = 0
         self._sheet_column_start = 0
-        self._sheet_row_count = 0
+        self._sheet_row_end = 0
         self._sheet_column_count = 0
+        self._sheet_data = []
 
         # 读取EXCEL的配置信息
-        self._row_caption = 0
-        self._row_start_read = 0
-        self._row_count = 0
+        self._mail_row_caption = 0
+        self._mail_row_start = 0
+        self._mail_row_end = 0
+        self._mail_count = 0
 
         self._column_sender = 0
         self._column_to = 0
         self._column_cc = 0
+        self._column_subject = 0
         self._column_body = 0
         self._column_attachment_list = []
         self._column_search_replace_list = []
 
-        self._sendmail_count = 0
-
-        # 发送单人
-        self._sender = ""
-        self._cc = ""
-        self._subject = ""
-        self._body = ""
-        self._attachments = []
+        # 默认邮件信息
+        self._default_mail = self.SendMailInfo()
 
         # 列表，如果每人的信息不一样
-        self._sender_list = []
-        self._to_list = []
-        self._cc_list = []
-        self._subject_list = []
-        self._body_list = []
-        self._attachments_list = []
-        # Body 文本替换列表
-        self._body_replace_list = []
+        self._send_mail_list = []
 
         self._outlook = outlook.OutlookMail()
         self._excel = excel.ExcelDataBase()
@@ -70,11 +75,11 @@ class BatchProcessSend(object):
                       column_sender: int = 0,
                       column_cc: int = 0,
                       column_body: int = 0,
-                      column_attachment_list: list = [],
-                      column_search_list: list = [],
-                      column_replace_list: list = []):
+                      column_attachment_list: list = None,
+                      column_search_list: list = None,
+                      column_replace_list: list = None):
         """
-
+        配置读取列信息
         :param column_sender:
         :param column_cc:
         :param column_body:
@@ -91,22 +96,26 @@ class BatchProcessSend(object):
         len_s = len(column_search_list)
         len_r = len(column_replace_list)
         if len_s != len_r:
-            if len_s > 0 and len_r == 0:
-                # 没有填写替换数据
-                return False
-            if len_s == 0:
-                #
-                column_search_list =
-        for column_search, column_replace in zip(column_search_list,column_replace_list):
+            return False
+        for column_search, column_replace in zip(column_search_list, column_replace_list):
             zip_column = BatchProcessSend.SearchReplaceColumn()
             zip_column._column_search = column_search
             zip_column._column_replace = column_replace
-            self._column_attachment_list.append(zip_column)
+            self._column_search_replace_list.append(zip_column)
+        return True
+
+    def config_default(self, sender, to, cc, subject, body, attachment_list):
+        self._default_mail.sender = sender
+        self._default_mail.to = to
+        self._default_mail._cc = cc
+        self._default_mail._subject = subject
+        self._default_mail._body = body
+        self._default_mail._attachment_list = attachment_list
         return True
 
     def open_excel(self, xls_file: str) -> bool:
         ret = self._excel.start()
-        if not ret :
+        if not ret:
             return False
         ret = self._excel.open_book(xls_file, False)
         if not ret:
@@ -119,25 +128,69 @@ class BatchProcessSend(object):
         ret = self._excel.load_sheet(sheet_name)
         if not ret:
             return False
-        self._sheet_row_start, self._sheet_column_start, self._sheet_row_count, self._sheet_column_count \
-            = self._excel.used_range_coord()
+        # 读取EXCEL Sheet的信息
+        self._sheet_row_start, self._sheet_column_start, self._sheet_row_end, self._sheet_column_count, \
+        self._sheet_data = self._excel.used_range_data()
+
+        self._mail_row_caption = self._sheet_row_start
+        self._mail_row_start = self._sheet_row_start + 1
+        self._mail_row_end = self._sheet_row_end
+        self._mail_count = self._mail_row_end - self._mail_row_end + 1
+
+        self._column_sender = self._sheet_column_start
+        self._column_to = self._sheet_column_start + 1
+        self._column_cc = self._sheet_column_start + 2
+        self._column_subject = self._sheet_column_start + 2
+        self._column_body = self._sheet_column_start + 4
         return True
 
-    def check_config(self) -> bool:
+    def generate_run_para(self):
+        self._mail_count = self._mail_row_end - self._mail_row_end + 1
+        return
 
-        if self._sendmail_count > self._sheet_row_count - self._sheet_row_start + 1:
+    def check_run_para(self) -> bool:
+        if self._mail_row_start <= 0 or self._mail_row_end <= 0:
             return False
-        if self._row_start_read > self._sheet_row_start or self._row_caption > self._sheet_row_start:
+        if self._column_sender > 0 or self._column_to:
             return False
-        self._row_count = self._sheet_row_count - self._row_start_read
-        if self._sendmail_count <= 0:
-            self._sendmail_count = self._row_count
-        if self._sendmail_count > self._row_count:
-            self._sendmail_count = self._row_count
-
         return True
 
-    def generate_send_list(self)-> bool:
+    def generate_send_list(self) -> bool:
+        self.generate_run_para()
+        if not self.check_run_para():
+            return False
+        i = 0
+        while i < self._mail_count:
+            new_mail = self.SendMailInfo()
+            if 0 != self._column_sender:
+                new_mail.sender = self._sheet_data[i + self._mail_row_start][self._column_sender]
+            else:
+                new_mail.sender = self._default_mail.sender
+            if 0 != self._column_to:
+                new_mail.to = self._sheet_data[i + self._mail_row_start][self._column_to]
+            else:
+                new_mail.to = self._default_mail.to
+            if 0 != self._column_cc:
+                new_mail.cc = self._sheet_data[i + self._mail_row_start][self._column_cc]
+            else:
+                new_mail.cc = self._default_mail.cc
+            if 0 != self._column_subject:
+                new_mail.subject = self._sheet_data[i + self._mail_row_start][self._column_subject]
+            else:
+                new_mail.subject = self._default_mail.subject
+            if 0 != self._column_body:
+                new_mail.body = self._sheet_data[i + self._mail_row_start][self._column_body]
+            else:
+                new_mail.body = self._default_mail.body
+
+            if not self._column_attachment_list:
+                for column_attachment in self._column_attachment_list:
+                    new_mail.attachment_list.append(column_attachment)
+
+            self._outlook.create_sendmail()
+            self._outlook.set_send_account(new_mail.sender)
+            self._outlook.set_sendmail(new_mail.sender, new_mail.to, new_mail.cc, new_mail.subject, new_mail.body)
+            self._outlook.send_mail()
 
         return True
 

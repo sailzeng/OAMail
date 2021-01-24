@@ -5,6 +5,8 @@ import enum
 
 # 邮件处理，处理OUTLOOK
 class OutlookMail(object):
+    _outlook_app: None
+
     @enum.unique
     class OutlookFolder(enum.Enum):
         FOLDER_OUTBOX = 1
@@ -20,6 +22,7 @@ class OutlookMail(object):
         self._out_info = []
         self._read_folder = None
         self._read_mails = None
+        self._send_mail = None
 
     # 清理所有的输出信息
     def clear_out_info(self):
@@ -75,40 +78,61 @@ class OutlookMail(object):
             self._send_account = self._accounts.Item(1)
         return
 
-    def send_mail(self, receiver, subject, body):
+    def create_sendmail(self):
+        """
+        根据模版邮件发送
+        """
+        # 0: olMailItem
+        self._send_mail = self._outlook_app.CreateItem(0)
+        self._send_mail.SendUsingAccount = self._send_account
+        return
+
+    def create_sendmail_from_copy(self, copy_mail):
+        """
+        根据模版邮件发送
+        """
+        # 0: olMailItem
+        self._send_mail = self._outlook_app.CreateItem(0)
+        self._send_mail = copy_mail.Copy()
+        self._send_mail.SendUsingAccount = self._send_account
+        return
+
+    def set_sendmail(self, to, cc, subject, body):
         """
         发送邮件
-        :param receiver: 邮件接受者
+        :param to: 邮件接受者
+        :param cc:
         :param subject: 邮件标题
         :param body: 邮件内容
         :return: 无
         """
-        # 0: olMailItem
-        mail_item = self._outlook_app.CreateItem(0)
-
-        mail_item.Recipients.Add(receiver)
-        mail_item.Subject = subject
-        mail_item.SendUsingAccount = self._send_account
+        recipient = self._send_mail.Recipients.Add(to)
+        # olTo 1   olCC  2
+        recipient.Type = 1
+        if len(cc) == 0:
+            recipient = self._send_mail.Recipients.Add(cc)
+            recipient.Type = 2
+        self._send_mail.Subject = subject
+        self._send_mail.SendUsingAccount = self._send_account
         # 2: Html format
-        mail_item.BodyFormat = 2
-        mail_item.HTMLBody = body
-        mail_item.Send()
+        self._send_mail.BodyFormat = 2
+        self._send_mail.HTMLBody = body
         return
 
-    def send_mail_from_copy(self, receiver, subject, copy_mail):
+    def attach_sendmail(self, attachments_list):
         """
-        根据模版邮件发送
+        绑定附件文件
+        """
+        # olByValue 1
+        for attach in attachments_list:
+            self._send_mail.Attachments.Add(attach,1)
+        return
 
+    def send_mail(self):
         """
-        # 0: olMailItem
-        new_mail = self._outlook_app.CreateItem(0)
-        # 2: Html format
-        new_mail.BodyFormat = 2
-        new_mail = copy_mail.Copy()
-        new_mail.Recipients.Add(receiver)
-        new_mail.Subject = subject
-        new_mail.SendUsingAccount = self._send_account
-        new_mail.Send()
+        发送邮件
+        """
+        self._mail_item.Send()
         return
 
     def read_account_folder(self, read_account, folder):
