@@ -25,19 +25,6 @@ class BatchProcessSend(object):
             self._search = ""
             self._replace = ""
 
-    class SendMailInfo(object):
-        """
-        搜索替换的字符串
-        """
-
-        def __init__(self):
-            self.sender = ""
-            self.to = ""
-            self.cc = ""
-            self.subject = ""
-            self.body = ""
-            self.attachment_list = []
-
     def __init__(self):
         # EXCEL 表的信息,根据EXCEL得到
         self._sheets_name = []
@@ -62,7 +49,7 @@ class BatchProcessSend(object):
         self._column_search_replace_list = []
 
         # 默认邮件信息
-        self._default_mail = self.SendMailInfo()
+        self._default_mail = outlook.SendMailInfo()
 
         # 列表，如果每人的信息不一样
         self._send_mail_list = []
@@ -107,10 +94,10 @@ class BatchProcessSend(object):
     def config_default(self, sender, to, cc, subject, body, attachment_list):
         self._default_mail.sender = sender
         self._default_mail.to = to
-        self._default_mail._cc = cc
-        self._default_mail._subject = subject
-        self._default_mail._body = body
-        self._default_mail._attachment_list = attachment_list
+        self._default_mail.cc = cc
+        self._default_mail.subject = subject
+        self._default_mail.body = body
+        self._default_mail.attachment_list = attachment_list
         return True
 
     def open_excel(self, xls_file: str) -> bool:
@@ -125,12 +112,12 @@ class BatchProcessSend(object):
         return True
 
     def load_sheet(self, sheet_name: str) -> bool:
-        ret = self._excel.load_sheet(sheet_name)
+        ret = self._excel.load_sheet_byname(sheet_name)
         if not ret:
             return False
         # 读取EXCEL Sheet的信息
-        self._sheet_row_start, self._sheet_column_start, self._sheet_row_end, self._sheet_column_count, \
-        self._sheet_data = self._excel.used_range_data()
+        (self._sheet_row_start, self._sheet_column_start, self._sheet_row_end, self._sheet_column_count,
+         self._sheet_data) = self._excel.used_range_data()
 
         self._mail_row_caption = self._sheet_row_start
         self._mail_row_start = self._sheet_row_start + 1
@@ -161,7 +148,7 @@ class BatchProcessSend(object):
             return False
         i = 0
         while i < self._mail_count:
-            new_mail = self.SendMailInfo()
+            new_mail = outlook.SendMailInfo()
             if 0 != self._column_sender:
                 new_mail.sender = self._sheet_data[i + self._mail_row_start][self._column_sender]
             else:
@@ -189,7 +176,7 @@ class BatchProcessSend(object):
 
             self._outlook.create_sendmail()
             self._outlook.set_send_account(new_mail.sender)
-            self._outlook.set_sendmail(new_mail.sender, new_mail.to, new_mail.cc, new_mail.subject, new_mail.body)
+            self._outlook.set_sendmail(new_mail.to, new_mail.cc, new_mail.subject, new_mail.body)
             self._outlook.send_mail()
 
         return True
