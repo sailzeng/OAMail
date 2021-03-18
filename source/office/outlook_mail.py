@@ -1,12 +1,23 @@
-import os
 import win32com.client as win32
 import enum
 
 
+class SendMailInfo(object):
+    """
+    搜索替换的字符串
+    """
+
+    def __init__(self):
+        self.sender = ""
+        self.to = ""
+        self.cc = ""
+        self.subject = ""
+        self.body = ""
+        self.attachment_list = []
+
+
 # 邮件处理，处理OUTLOOK
 class OutlookMail(object):
-    _outlook_app: None
-
     @enum.unique
     class OutlookFolder(enum.Enum):
         FOLDER_OUTBOX = 1
@@ -42,14 +53,14 @@ class OutlookMail(object):
             # self._outlook_app.Visible = 0
             self._ol_namespace.DisplayAlerts = 0
         except Exception as value:
-            print("Exception occured, value = ", value)
+            print("Exception occurred, value = ", value)
         return
 
     def quit(self):
-        '''
+        """
         退出Outlook,
         :return:
-        '''
+        """
         self._ol_namespace.Application.Quit()
         return
 
@@ -119,20 +130,23 @@ class OutlookMail(object):
         self._send_mail.HTMLBody = body
         return
 
+    def set_sendmail_2(self, mail):
+        return self.set_sendmail(mail.to, mail.cc, mail.subject, mail.body)
+
     def attach_sendmail(self, attachments_list):
         """
         绑定附件文件
         """
         # olByValue 1
         for attach in attachments_list:
-            self._send_mail.Attachments.Add(attach,1)
+            self._send_mail.Attachments.Add(attach, 1)
         return
 
     def send_mail(self):
         """
         发送邮件
         """
-        self._mail_item.Send()
+        self._send_mail.Send()
         return
 
     def read_account_folder(self, read_account, folder):
@@ -148,7 +162,6 @@ class OutlookMail(object):
         # olFolderSentMail 5 已经发送邮件
         # olFolderInbox 6 收件箱
         # olFolderDrafts 16 草稿箱
-        ol_folder = 0
         if folder == self.OutlookFolder.FOLDER_OUTBOX:
             ol_folder = 3
         elif folder == self.OutlookFolder.FOLDER_SENDMAIL:
@@ -187,12 +200,12 @@ class OutlookMail(object):
         return 0
 
     def sort_mail(self, property_name, descending):
-        '''
+        """
 
         :param property_name:
         :param descending:
         :return:
-        '''
+        """
         self._read_mails.Sort(property_name, descending)
         return
 
@@ -205,7 +218,6 @@ class OutlookMail(object):
         """
         read_num = 0
         read_list = []
-        mail = None
         for mail in self._read_mails:
             # 标题过滤
             if filter_subject and -1 == mail.Subject.find(filter_subject):
@@ -219,8 +231,6 @@ class OutlookMail(object):
 
     def print_folder_mail(self, filter_subject, max_read_num):
         read_num = 0
-        read_list = []
-        mail = None
         for mail in self._read_mails:
             # 标题过滤
             if filter_subject and -1 == mail.Subject.find(filter_subject):

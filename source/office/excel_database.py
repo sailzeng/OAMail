@@ -17,7 +17,7 @@ class ExcelDataBase(object):
         try:
             self._excel_app = win32.Dispatch('Excel.Application')
         except Exception as value:
-            print("Exception occured, value = ", value)
+            print("Exception occurred, value = ", value)
             return False
         return True
 
@@ -36,7 +36,7 @@ class ExcelDataBase(object):
             if not not_exist_new:
                 return False
 
-        # 得到绝对路径，因为ActiveX只支持绝对路径，包括Open，包括Saveas,
+        # 得到绝对路径，因为ActiveX只支持绝对路径，包括Open，包括 Save as,
         # 不光必须用绝对路径，还需要实用原生的路径分割符号'\'
 
         self._work_book = self._excel_app.Workbooks.Open(file_name)
@@ -76,13 +76,18 @@ class ExcelDataBase(object):
             name_list.append(self._work_book.Worksheets(i + 1).Name)
         return name_list
 
-    def load_sheet(self, sheet_index: int):
+    def load_sheet_byindex(self, sheet_index: int):
         self._work_sheet = self._work_book.Worksheets(sheet_index)
         if not self._work_book:
             return False
         return True
 
-    def load_sheet(self, sheet_name: str):
+    def load_sheet_byname(self, sheet_name: str):
+        """
+
+        :param sheet_name: 
+        :return: 
+        """
         self._work_sheet = self._work_book.Worksheets(sheet_name)
         if not self._work_book:
             return False
@@ -131,7 +136,7 @@ class ExcelDataBase(object):
         else:
             return self._range_coord(used_range)
 
-    def used_range_data(self):
+    def used_range_data(self) -> object:
         used_rg = self._work_sheet.UsedRange
         return self._range_data(used_rg)
 
@@ -160,7 +165,7 @@ class ExcelDataBase(object):
     def range(self, cell1: str, cell2: str = None):
         return self._work_sheet.Range(cell1, cell2)
 
-    def range(self, cell1_row: int, cell1_column: int, cell2_row: int, cell2_column: int):
+    def range2(self, cell1_row: int, cell1_column: int, cell2_row: int, cell2_column: int):
         cell1 = str(cell1_row) + ExcelDataBase.column_name(cell1_column)
         cell2 = str(cell2_row) + ExcelDataBase.column_name(cell2_column)
         return self._work_sheet.Range(cell1, cell2)
