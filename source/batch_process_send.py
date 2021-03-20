@@ -69,6 +69,7 @@ class BatchProcessSend(object):
                       column_replace_list: list = None):
         """
         配置读取列信息
+        :type column_subject: object
         :param column_sender:
         :param column_to:
         :param column_cc:
@@ -81,6 +82,7 @@ class BatchProcessSend(object):
         self._column_sender = column_sender
         self._column_to = column_to
         self._column_cc = column_cc
+        self._column_subject = column_subject
         self._column_body = column_body
         for column_attachment in column_attachment_list:
             self._column_attachment_list.append(column_attachment)
@@ -156,6 +158,8 @@ class BatchProcessSend(object):
             self._column_subject += self._sheet_column_start
         if self._column_body != 0:
             self._column_body += self._sheet_column_start
+        if self.check_run_para():
+            return False
         return True
 
     def check_run_para(self) -> bool:
@@ -199,21 +203,17 @@ class BatchProcessSend(object):
         return True
 
     def send_all(self) -> bool:
-
-        if not self.check_run_para():
-            return False
         i = 0
         while i < self._mail_count:
-
             send_result = self.send_one(i)
-            if not send_result :
+            if not send_result:
                 return False
         return True
 
 
 if __name__ == '__main__':
     batch_send = BatchProcessSend()
-    batch_send.config_column(0,1,2,3,4)
-    batch_send.config_default("sailzeng@tencent.com")
-    batch_send.
+    batch_send.config_column(0, 1, 2, 3, 4)
+    batch_send.config_default("fullsail@163.com")
+    batch_send
     pass
