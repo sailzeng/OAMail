@@ -53,7 +53,7 @@ class OutlookMail(object):
             # self._outlook_app.Visible = 0
             self._ol_namespace.DisplayAlerts = 0
         except Exception as value:
-            print("Exception occured, value = ", value)
+            print("Exception occurred, value = ", value)
         return
 
     def quit(self):

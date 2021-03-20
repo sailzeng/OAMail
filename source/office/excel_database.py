@@ -17,7 +17,7 @@ class ExcelDataBase(object):
         try:
             self._excel_app = win32.Dispatch('Excel.Application')
         except Exception as value:
-            print("Exception occured, value = ", value)
+            print("Exception occurred, value = ", value)
             return False
         return True
 

@@ -20,6 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="主控类的思路感觉没有想好。有点复杂了。">
+      <change beforePath="$PROJECT_DIR$/.idea/OAMail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OAMail.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/batch_process_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/batch_process_send.py" afterDir="false" />
     </list>
@@ -139,6 +141,7 @@
       <workItem from="1606724382763" duration="5279000" />
       <workItem from="1606803521902" duration="8800000" />
       <workItem from="1607000677393" duration="1082000" />
+      <workItem from="1616127396002" duration="6050000" />
     </task>
     <task id="LOCAL-00001" summary="OUTLOOK的功能基本完成。">
       <created>1606371676739</created>

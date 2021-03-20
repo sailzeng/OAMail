@@ -41,10 +41,10 @@ class BatchProcessSend(object):
         self._mail_count = 0
 
         self._column_sender = 0
-        self._column_to = 0
-        self._column_cc = 0
-        self._column_subject = 0
-        self._column_body = 0
+        self._column_to = 1
+        self._column_cc = 2
+        self._column_subject = 3
+        self._column_body = 4
         self._column_attachment_list = []
         self._column_search_replace_list = []
 
@@ -60,14 +60,17 @@ class BatchProcessSend(object):
 
     def config_column(self,
                       column_sender: int = 0,
-                      column_cc: int = 0,
-                      column_body: int = 0,
+                      column_to: int = 1,
+                      column_cc: int = 2,
+                      column_subject: int = 3,
+                      column_body: int = 4,
                       column_attachment_list: list = None,
                       column_search_list: list = None,
                       column_replace_list: list = None):
         """
         配置读取列信息
         :param column_sender:
+        :param column_to:
         :param column_cc:
         :param column_body:
         :param column_attachment_list:
@@ -76,6 +79,7 @@ class BatchProcessSend(object):
         :return:
         """
         self._column_sender = column_sender
+        self._column_to = column_to
         self._column_cc = column_cc
         self._column_body = column_body
         for column_attachment in column_attachment_list:
@@ -91,13 +95,31 @@ class BatchProcessSend(object):
             self._column_search_replace_list.append(zip_column)
         return True
 
-    def config_default(self, sender, to, cc, subject, body, attachment_list):
+    def config_default(self,
+                       sender=None,
+                       to=None,
+                       cc=None,
+                       subject=None,
+                       body=None,
+                       attachment_list=None):
         self._default_mail.sender = sender
         self._default_mail.to = to
         self._default_mail.cc = cc
         self._default_mail.subject = subject
         self._default_mail.body = body
         self._default_mail.attachment_list = attachment_list
+        if sender is not None:
+            self._column_sender = 0
+        if to is not None:
+            self._column_to = 0
+        if cc is not None:
+            self._column_cc = 0
+        if subject is not None:
+            self._column_subject = 0
+        if body is not None:
+            self._column_body = 0
+        if attachment_list is not None:
+            self._column_attachment_list = 0
         return True
 
     def open_excel(self, xls_file: str) -> bool:
@@ -124,11 +146,16 @@ class BatchProcessSend(object):
         self._mail_row_end = self._sheet_row_end
         self._mail_count = self._mail_row_end - self._mail_row_end + 1
 
-        self._column_sender = self._sheet_column_start
-        self._column_to = self._sheet_column_start + 1
-        self._column_cc = self._sheet_column_start + 2
-        self._column_subject = self._sheet_column_start + 2
-        self._column_body = self._sheet_column_start + 4
+        if self._column_sender != 0:
+            self._column_sender += self._sheet_column_start
+        if self._column_to != 0:
+            self._column_to += self._sheet_column_start
+        if self._column_cc != 0:
+            self._column_cc += self._sheet_column_start
+        if self._column_subject != 0:
+            self._column_subject += self._sheet_column_start
+        if self._column_body != 0:
+            self._column_body += self._sheet_column_start
         return True
 
     def check_run_para(self) -> bool:
@@ -177,6 +204,7 @@ class BatchProcessSend(object):
             return False
         i = 0
         while i < self._mail_count:
+
             send_result = self.send_one(i)
             if not send_result :
                 return False
@@ -184,4 +212,8 @@ class BatchProcessSend(object):
 
 
 if __name__ == '__main__':
+    batch_send = BatchProcessSend()
+    batch_send.config_column(0,1,2,3,4)
+    batch_send.config_default("sailzeng@tencent.com")
+    batch_send.
     pass
