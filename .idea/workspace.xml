@@ -22,8 +22,6 @@
     <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="主控类的思路感觉没有想好。有点复杂了。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/batch_process_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/batch_process_send.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/office/excel_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/excel_database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/office/outlook_mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/outlook_mail.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

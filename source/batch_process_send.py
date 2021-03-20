@@ -131,10 +131,6 @@ class BatchProcessSend(object):
         self._column_body = self._sheet_column_start + 4
         return True
 
-    def generate_run_para(self):
-        self._mail_count = self._mail_row_end - self._mail_row_end + 1
-        return
-
     def check_run_para(self) -> bool:
         if self._mail_row_start <= 0 or self._mail_row_end <= 0:
             return False
@@ -142,43 +138,48 @@ class BatchProcessSend(object):
             return False
         return True
 
-    def generate_send_list(self) -> bool:
-        self.generate_run_para()
+    def send_one(self, i: int) -> bool:
+        new_mail = outlook.SendMailInfo()
+        if 0 != self._column_sender:
+            new_mail.sender = self._sheet_data[i + self._mail_row_start][self._column_sender]
+        else:
+            new_mail.sender = self._default_mail.sender
+        if 0 != self._column_to:
+            new_mail.to = self._sheet_data[i + self._mail_row_start][self._column_to]
+        else:
+            new_mail.to = self._default_mail.to
+        if 0 != self._column_cc:
+            new_mail.cc = self._sheet_data[i + self._mail_row_start][self._column_cc]
+        else:
+            new_mail.cc = self._default_mail.cc
+        if 0 != self._column_subject:
+            new_mail.subject = self._sheet_data[i + self._mail_row_start][self._column_subject]
+        else:
+            new_mail.subject = self._default_mail.subject
+        if 0 != self._column_body:
+            new_mail.body = self._sheet_data[i + self._mail_row_start][self._column_body]
+        else:
+            new_mail.body = self._default_mail.body
+
+        if not self._column_attachment_list:
+            for column_attachment in self._column_attachment_list:
+                new_mail.attachment_list.append(column_attachment)
+
+        self._outlook.create_sendmail()
+        self._outlook.set_send_account(new_mail.sender)
+        self._outlook.set_sendmail(new_mail.to, new_mail.cc, new_mail.subject, new_mail.body)
+        self._outlook.send_mail()
+        return True
+
+    def send_all(self) -> bool:
+
         if not self.check_run_para():
             return False
         i = 0
         while i < self._mail_count:
-            new_mail = outlook.SendMailInfo()
-            if 0 != self._column_sender:
-                new_mail.sender = self._sheet_data[i + self._mail_row_start][self._column_sender]
-            else:
-                new_mail.sender = self._default_mail.sender
-            if 0 != self._column_to:
-                new_mail.to = self._sheet_data[i + self._mail_row_start][self._column_to]
-            else:
-                new_mail.to = self._default_mail.to
-            if 0 != self._column_cc:
-                new_mail.cc = self._sheet_data[i + self._mail_row_start][self._column_cc]
-            else:
-                new_mail.cc = self._default_mail.cc
-            if 0 != self._column_subject:
-                new_mail.subject = self._sheet_data[i + self._mail_row_start][self._column_subject]
-            else:
-                new_mail.subject = self._default_mail.subject
-            if 0 != self._column_body:
-                new_mail.body = self._sheet_data[i + self._mail_row_start][self._column_body]
-            else:
-                new_mail.body = self._default_mail.body
-
-            if not self._column_attachment_list:
-                for column_attachment in self._column_attachment_list:
-                    new_mail.attachment_list.append(column_attachment)
-
-            self._outlook.create_sendmail()
-            self._outlook.set_send_account(new_mail.sender)
-            self._outlook.set_sendmail(new_mail.to, new_mail.cc, new_mail.subject, new_mail.body)
-            self._outlook.send_mail()
-
+            send_result = self.send_one(i)
+            if not send_result :
+                return False
         return True
 
 
