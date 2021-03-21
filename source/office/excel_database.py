@@ -16,6 +16,7 @@ class ExcelDataBase(object):
     def start(self) -> bool:
         try:
             self._excel_app = win32.Dispatch('Excel.Application')
+            print("EXCEL Application start.")
         except Exception as value:
             print("Exception occurred, value = ", value)
             return False
@@ -32,7 +33,7 @@ class ExcelDataBase(object):
     def open_book(self, file_name, not_exist_new) -> bool:
         """        """
         # 如果指向的文件不存在，则需要新建一个
-        if os.path.exists(file_name) and os.path.isfile(file_name):
+        if not (os.path.exists(file_name) and os.path.isfile(file_name)):
             if not not_exist_new:
                 return False
 
@@ -74,11 +75,12 @@ class ExcelDataBase(object):
         i = 0
         while i < count:
             name_list.append(self._work_book.Worksheets(i + 1).Name)
+            i += 1
         return name_list
 
     def load_sheet_byindex(self, sheet_index: int):
         self._work_sheet = self._work_book.Worksheets(sheet_index)
-        if not self._work_book:
+        if not self._work_sheet:
             return False
         return True
 
@@ -89,7 +91,7 @@ class ExcelDataBase(object):
         :return: 
         """
         self._work_sheet = self._work_book.Worksheets(sheet_name)
-        if not self._work_book:
+        if not self._work_sheet:
             return False
         return True
 
@@ -113,12 +115,12 @@ class ExcelDataBase(object):
             row_start, column_start, row_count, column_count = \
                 ExcelDataBase._range_coord(read_range)
             ret_list = []
-            i = 0
-            j = 0
-            while i < row_count:
+            i = 1
+            j = 1
+            while i <= row_count:
                 line = []
-                while j < column_count:
-                    line.append(read_range.Cell(i, j))
+                while j <= column_count:
+                    line.append(read_range.Cells(i, j))
                     j += 1
                 ret_list.append(line)
                 i += 1
@@ -136,7 +138,7 @@ class ExcelDataBase(object):
         else:
             return self._range_coord(used_range)
 
-    def used_range_data(self) -> object:
+    def used_range_data(self):
         used_rg = self._work_sheet.UsedRange
         return self._range_data(used_rg)
 

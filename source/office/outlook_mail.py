@@ -51,7 +51,8 @@ class OutlookMail(object):
             # 还有一种写法
             # self._outlook_app =  win32.gencache.EnsureDispatch('Excel.Application')
             # self._outlook_app.Visible = 0
-            self._ol_namespace.DisplayAlerts = 0
+            # self._ol_namespace.DisplayAlerts = 0
+            print("Outlook Application start.")
         except Exception as value:
             print("Exception occurred, value = ", value)
         return

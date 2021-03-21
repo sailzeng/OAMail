@@ -56,6 +56,8 @@ class BatchProcessSend(object):
 
         self._outlook = outlook.OutlookMail()
         self._excel = excel.ExcelDataBase()
+        self._outlook.start()
+        self._excel.start()
         return
 
     def config_column(self,
@@ -84,17 +86,28 @@ class BatchProcessSend(object):
         self._column_cc = column_cc
         self._column_subject = column_subject
         self._column_body = column_body
-        for column_attachment in column_attachment_list:
-            self._column_attachment_list.append(column_attachment)
-        len_s = len(column_search_list)
-        len_r = len(column_replace_list)
-        if len_s != len_r:
-            return False
-        for column_search, column_replace in zip(column_search_list, column_replace_list):
-            zip_column = BatchProcessSend.SearchReplaceColumn()
-            zip_column._column_search = column_search
-            zip_column._column_replace = column_replace
-            self._column_search_replace_list.append(zip_column)
+        if column_attachment_list:
+            for column_attachment in column_attachment_list:
+                self._column_attachment_list.append(column_attachment)
+            len_s = len(column_search_list)
+            len_r = len(column_replace_list)
+            if len_s != len_r:
+                return False
+        if column_search_list and column_replace_list :
+            for column_search, column_replace in zip(column_search_list, column_replace_list):
+                zip_column = BatchProcessSend.SearchReplaceColumn()
+                zip_column._column_search = column_search
+                zip_column._column_replace = column_replace
+                self._column_search_replace_list.append(zip_column)
+        return True
+
+    def config_row(self,
+                   row_caption: int = 0,
+                   row_start: int = 0,
+                   row_end: int = 0):
+        self._mail_row_caption = row_caption
+        self._mail_row_start = row_start
+        self._mail_row_end = row_end
         return True
 
     def config_default(self,
@@ -125,9 +138,6 @@ class BatchProcessSend(object):
         return True
 
     def open_excel(self, xls_file: str) -> bool:
-        ret = self._excel.start()
-        if not ret:
-            return False
         ret = self._excel.open_book(xls_file, False)
         if not ret:
             return False
@@ -135,10 +145,29 @@ class BatchProcessSend(object):
 
         return True
 
-    def load_sheet(self, sheet_name: str) -> bool:
+    def load_sheet_byname(self, sheet_name: str) -> bool:
         ret = self._excel.load_sheet_byname(sheet_name)
         if not ret:
             return False
+        ret = self._lood_sheet()
+        if not ret:
+            return False
+        return True
+
+    def load_sheet_byindex(self, index: int) -> bool:
+        ret = self._excel.load_sheet_byindex(index)
+        if not ret:
+            return False
+        ret = self._lood_sheet()
+        if not ret:
+            return False
+        return True
+
+    def _lood_sheet(self) -> bool:
+        """
+
+        :rtype: object
+        """
         # 读取EXCEL Sheet的信息
         (self._sheet_row_start, self._sheet_column_start, self._sheet_row_end, self._sheet_column_count,
          self._sheet_data) = self._excel.used_range_data()
@@ -208,12 +237,16 @@ class BatchProcessSend(object):
             send_result = self.send_one(i)
             if not send_result:
                 return False
+            i += 1
         return True
 
 
 if __name__ == '__main__':
     batch_send = BatchProcessSend()
     batch_send.config_column(0, 1, 2, 3, 4)
+    batch_send.config_row(1, 2, 3)
     batch_send.config_default("fullsail@163.com")
-    batch_send
+    batch_send.open_excel("D:\\SendMail.xlsx")
+    batch_send.load_sheet_byindex(1)
+    batch_send.send_all()
     pass

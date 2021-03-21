@@ -22,6 +22,8 @@
     <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="主控类的思路感觉没有想好。有点复杂了。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/batch_process_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/batch_process_send.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/office/excel_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/excel_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/office/outlook_mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/outlook_mail.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +71,28 @@
       <recent name="E:\Courage\Python\OAMail\src\office" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.excel_database">
+  <component name="RunManager" selected="Python.batch_process_send">
+    <configuration name="batch_process_send" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="OAMail" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/source" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/source/batch_process_send.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="excel_database" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="OAMail" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,6 +139,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.batch_process_send" />
         <item itemvalue="Python.excel_database" />
         <item itemvalue="Python.outlook_mail" />
       </list>
@@ -203,9 +227,62 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="683" y="302" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616090562655" />
+    <state width="2027" height="305" key="GridCell.Tab.0.bottom" timestamp="1616354142904">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="305" key="GridCell.Tab.0.bottom/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354142904" />
+    <state width="2027" height="305" key="GridCell.Tab.0.center" timestamp="1616354142904">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="305" key="GridCell.Tab.0.center/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354142904" />
+    <state width="2027" height="305" key="GridCell.Tab.0.left" timestamp="1616354142904">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="305" key="GridCell.Tab.0.left/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354142904" />
+    <state width="2027" height="305" key="GridCell.Tab.0.right" timestamp="1616354142904">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="305" key="GridCell.Tab.0.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354142904" />
+    <state width="2027" height="376" key="GridCell.Tab.1.bottom" timestamp="1616354021811">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="376" key="GridCell.Tab.1.bottom/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354021811" />
+    <state width="2027" height="376" key="GridCell.Tab.1.center" timestamp="1616354021811">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="376" key="GridCell.Tab.1.center/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354021811" />
+    <state width="2027" height="376" key="GridCell.Tab.1.left" timestamp="1616354021811">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="376" key="GridCell.Tab.1.left/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354021811" />
+    <state width="2027" height="376" key="GridCell.Tab.1.right" timestamp="1616354021811">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2027" height="376" key="GridCell.Tab.1.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354021811" />
     <state x="515" y="171" key="SettingsEditor" timestamp="1611491800932">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="515" y="171" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1611491800932" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/source/batch_process_send.py</url>
+          <line>250</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/source/batch_process_send.py</url>
+          <line>172</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/source/office/excel_database.py</url>
+          <line>142</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
