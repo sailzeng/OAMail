@@ -1,3 +1,4 @@
+import time
 import office.outlook_mail as outlook
 import office.excel_database as excel
 
@@ -54,11 +55,20 @@ class BatchProcessSend(object):
         # 列表，如果每人的信息不一样
         self._send_mail_list = []
 
+        self._outlook = None
+        self._excel = None
+        return
+
+    def start(self):
         self._outlook = outlook.OutlookMail()
         self._excel = excel.ExcelDataBase()
-        self._outlook.start()
-        self._excel.start()
-        return
+        ret = self._outlook.start()
+        if not ret:
+            return False
+        ret = self._excel.start()
+        if not ret:
+            return False
+        return True
 
     def config_column(self,
                       column_sender: int = 0,
@@ -93,7 +103,7 @@ class BatchProcessSend(object):
             len_r = len(column_replace_list)
             if len_s != len_r:
                 return False
-        if column_search_list and column_replace_list :
+        if column_search_list and column_replace_list:
             for column_search, column_replace in zip(column_search_list, column_replace_list):
                 zip_column = BatchProcessSend.SearchReplaceColumn()
                 zip_column._column_search = column_search
@@ -175,18 +185,18 @@ class BatchProcessSend(object):
         self._mail_row_caption = self._sheet_row_start
         self._mail_row_start = self._sheet_row_start + 1
         self._mail_row_end = self._sheet_row_end
-        self._mail_count = self._mail_row_end - self._mail_row_end + 1
+        self._mail_count = self._mail_row_end - self._mail_row_start + 1
 
         if self._column_sender != 0:
             self._column_sender += self._sheet_column_start
         if self._column_to != 0:
-            self._column_to += self._sheet_column_start
+            self._column_to += self._sheet_column_start - 1
         if self._column_cc != 0:
-            self._column_cc += self._sheet_column_start
+            self._column_cc += self._sheet_column_start - 1
         if self._column_subject != 0:
-            self._column_subject += self._sheet_column_start
+            self._column_subject += self._sheet_column_start - 1
         if self._column_body != 0:
-            self._column_body += self._sheet_column_start
+            self._column_body += self._sheet_column_start - 1
         if self.check_run_para():
             return False
         return True
@@ -200,34 +210,27 @@ class BatchProcessSend(object):
 
     def send_one(self, i: int) -> bool:
         new_mail = outlook.SendMailInfo()
+        new_mail = self._default_mail
+
         if 0 != self._column_sender:
-            new_mail.sender = self._sheet_data[i + self._mail_row_start][self._column_sender]
-        else:
-            new_mail.sender = self._default_mail.sender
+            new_mail.sender = self._sheet_data[i + self._mail_row_start - 1][self._column_sender - 1]
         if 0 != self._column_to:
-            new_mail.to = self._sheet_data[i + self._mail_row_start][self._column_to]
-        else:
-            new_mail.to = self._default_mail.to
+            new_mail.to = self._sheet_data[i + self._mail_row_start - 1][self._column_to - 1]
         if 0 != self._column_cc:
-            new_mail.cc = self._sheet_data[i + self._mail_row_start][self._column_cc]
-        else:
-            new_mail.cc = self._default_mail.cc
+            new_mail.cc = self._sheet_data[i + self._mail_row_start - 1][self._column_cc - 1]
         if 0 != self._column_subject:
-            new_mail.subject = self._sheet_data[i + self._mail_row_start][self._column_subject]
-        else:
-            new_mail.subject = self._default_mail.subject
+            new_mail.subject = self._sheet_data[i + self._mail_row_start - 1][self._column_subject - 1]
         if 0 != self._column_body:
-            new_mail.body = self._sheet_data[i + self._mail_row_start][self._column_body]
-        else:
-            new_mail.body = self._default_mail.body
+            new_mail.body = self._sheet_data[i + self._mail_row_start - 1][self._column_body - 1]
 
         if not self._column_attachment_list:
             for column_attachment in self._column_attachment_list:
-                new_mail.attachment_list.append(column_attachment)
+                attach = self._sheet_data[i + self._mail_row_start - 1][column_attachment - 1]
+                new_mail.attachment_list.append(attach)
 
         self._outlook.create_sendmail()
         self._outlook.set_send_account(new_mail.sender)
-        self._outlook.set_sendmail(new_mail.to, new_mail.cc, new_mail.subject, new_mail.body)
+        self._outlook.set_sendmail_all(new_mail)
         self._outlook.send_mail()
         return True
 
@@ -238,15 +241,9 @@ class BatchProcessSend(object):
             if not send_result:
                 return False
             i += 1
+            time.sleep(0.1)
         return True
 
 
 if __name__ == '__main__':
-    batch_send = BatchProcessSend()
-    batch_send.config_column(0, 1, 2, 3, 4)
-    batch_send.config_row(1, 2, 3)
-    batch_send.config_default("fullsail@163.com")
-    batch_send.open_excel("D:\\SendMail.xlsx")
-    batch_send.load_sheet_byindex(1)
-    batch_send.send_all()
     pass

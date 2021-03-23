@@ -13,7 +13,7 @@ class SendMailInfo(object):
         self.cc = ""
         self.subject = ""
         self.body = ""
-        self.attachment_list = []
+        self.attachment_list = None
 
 
 # 邮件处理，处理OUTLOOK
@@ -55,7 +55,8 @@ class OutlookMail(object):
             print("Outlook Application start.")
         except Exception as value:
             print("Exception occurred, value = ", value)
-        return
+            return False
+        return True
 
     def quit(self):
         """
@@ -96,7 +97,6 @@ class OutlookMail(object):
         """
         # 0: olMailItem
         self._send_mail = self._outlook_app.CreateItem(0)
-        self._send_mail.SendUsingAccount = self._send_account
         return
 
     def create_sendmail_from_copy(self, copy_mail):
@@ -106,7 +106,6 @@ class OutlookMail(object):
         # 0: olMailItem
         self._send_mail = self._outlook_app.CreateItem(0)
         self._send_mail = copy_mail.Copy()
-        self._send_mail.SendUsingAccount = self._send_account
         return
 
     def set_sendmail(self, to, cc, subject, body):
@@ -118,21 +117,29 @@ class OutlookMail(object):
         :param body: 邮件内容
         :return: 无
         """
-        recipient = self._send_mail.Recipients.Add(to)
+        # recipient = self._send_mail.Recipients.Add(to)
         # olTo 1   olCC  2
-        recipient.Type = 1
-        if len(cc) == 0:
-            recipient = self._send_mail.Recipients.Add(cc)
-            recipient.Type = 2
+        # recipient.Type = 1
+        # if len(cc) == 0:
+        #    recipient = self._send_mail.Recipients.Add(cc)
+        #    recipient.Type = 2
+        self._send_mail.To = to
+        self._send_mail.CC = cc
         self._send_mail.Subject = subject
         self._send_mail.SendUsingAccount = self._send_account
-        # 2: Html format
-        self._send_mail.BodyFormat = 2
-        self._send_mail.HTMLBody = body
+        # 这儿有个黑科技，有个BUG，好像是微软十年没改。或者？我用EXCEL VBA操作是正常的，Python不行
+        # https://www.jianshu.com/p/4f0ed762f521
+        self._send_mail._oleobj_.Invoke(*(64209, 0, 8, 0, self._send_account))
+
+        # 1:
+        self._send_mail.BodyFormat = 1
+        self._send_mail.Body = body
         return
 
-    def set_sendmail_2(self, mail):
-        return self.set_sendmail(mail.to, mail.cc, mail.subject, mail.body)
+    def set_sendmail_all(self, mail):
+        self.set_sendmail(mail.to, mail.cc, mail.subject, mail.body)
+        if mail.attachment_list is not None:
+            self.attach_sendmail(mail.attachment_list)
 
     def attach_sendmail(self, attachments_list):
         """

@@ -114,17 +114,7 @@ class ExcelDataBase(object):
         else:
             row_start, column_start, row_count, column_count = \
                 ExcelDataBase._range_coord(read_range)
-            ret_list = []
-            i = 1
-            j = 1
-            while i <= row_count:
-                line = []
-                while j <= column_count:
-                    line.append(read_range.Cells(i, j))
-                    j += 1
-                ret_list.append(line)
-                i += 1
-        return row_start, column_start, row_count, column_count, ret_list
+        return row_start, column_start, row_count, column_count, read_range.Value
 
     def used_range_coord(self):
         """

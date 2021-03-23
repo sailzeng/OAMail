@@ -20,6 +20,71 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6414c972-9f04-4986-8937-0c2cdbd4aacd" name="Default Changelist" comment="主控类的思路感觉没有想好。有点复杂了。">
+      <change afterPath="$PROJECT_DIR$/source/batch_process_send_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage-5.5.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage-5.5.dist-info/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage-5.5.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage-5.5.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage-5.5.dist-info/REQUESTED" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage-5.5.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage-5.5.dist-info/entry_points.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage-5.5.dist-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/__main__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/annotate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/backward.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/bytecode.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/cmdline.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/collector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/context.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/control.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/debug.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/disposition.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/env.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/execfile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/files.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/fullcoverage/encodings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/html.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/coverage_html.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/favicon_32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/jquery.ba-throttle-debounce.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/jquery.hotkeys.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/jquery.isonscreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/jquery.tablesorter.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/keybd_closed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/keybd_open.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/pyfile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/htmlfiles/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/inorout.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/jsonreport.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/misc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/multiproc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/numbits.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/parser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/phystokens.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/plugin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/plugin_support.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/python.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/pytracer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/results.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/sqldata.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/summary.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/templite.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/tomlconfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/tracer.cp39-win32.pyd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/version.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/coverage/xmlreport.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Scripts/coverage-3.9.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Scripts/coverage.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Scripts/coverage3.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/OAMail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OAMail.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/batch_process_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/batch_process_send.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/office/excel_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/office/excel_database.py" afterDir="false" />
@@ -48,12 +113,15 @@
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1kHdScylEM1oM68ejD7ZElq5Bmo" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -71,7 +139,7 @@
       <recent name="E:\Courage\Python\OAMail\src\office" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.batch_process_send">
+  <component name="RunManager" selected="Python.batch_process_send_test">
     <configuration name="batch_process_send" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="OAMail" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -84,7 +152,30 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/source/batch_process_send.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="batch_process_send_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="OAMail" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/source" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/source/batch_process_send_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,6 +230,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.batch_process_send_test" />
         <item itemvalue="Python.batch_process_send" />
         <item itemvalue="Python.excel_database" />
         <item itemvalue="Python.outlook_mail" />
@@ -164,6 +256,8 @@
       <workItem from="1606803521902" duration="8800000" />
       <workItem from="1607000677393" duration="1082000" />
       <workItem from="1616127396002" duration="6050000" />
+      <workItem from="1616383857410" duration="13786000" />
+      <workItem from="1616412746763" duration="2785000" />
     </task>
     <task id="LOCAL-00001" summary="OUTLOOK的功能基本完成。">
       <created>1606371676739</created>
@@ -212,77 +306,36 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="OUTLOOK的功能基本完成。" />
     <MESSAGE value="稍微写了两行EXCEL的代码。" />
     <MESSAGE value="按Python规范对文件改名。&#10;增加批处理的类。要动真格的了。" />
     <MESSAGE value="改变了一下目录结构。包的概念还是没搞明白。" />
     <option name="LAST_COMMIT_MESSAGE" value="改变了一下目录结构。包的概念还是没搞明白。" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="651" y="235" key="#Inspections" timestamp="1616089157980">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="651" y="235" key="#Inspections/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616089157980" />
-    <state x="683" y="302" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1616090562655">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="683" y="302" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616090562655" />
-    <state width="2027" height="305" key="GridCell.Tab.0.bottom" timestamp="1616354142904">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state width="2027" height="305" key="GridCell.Tab.0.bottom/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354142904" />
-    <state width="2027" height="305" key="GridCell.Tab.0.center" timestamp="1616354142904">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state width="2027" height="305" key="GridCell.Tab.0.center/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354142904" />
-    <state width="2027" height="305" key="GridCell.Tab.0.left" timestamp="1616354142904">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state width="2027" height="305" key="GridCell.Tab.0.left/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354142904" />
-    <state width="2027" height="305" key="GridCell.Tab.0.right" timestamp="1616354142904">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state width="2027" height="305" key="GridCell.Tab.0.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354142904" />
-    <state width="2027" height="376" key="GridCell.Tab.1.bottom" timestamp="1616354021811">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state width="2027" height="376" key="GridCell.Tab.1.bottom/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354021811" />
-    <state width="2027" height="376" key="GridCell.Tab.1.center" timestamp="1616354021811">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state width="2027" height="376" key="GridCell.Tab.1.center/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354021811" />
-    <state width="2027" height="376" key="GridCell.Tab.1.left" timestamp="1616354021811">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state width="2027" height="376" key="GridCell.Tab.1.left/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354021811" />
-    <state width="2027" height="376" key="GridCell.Tab.1.right" timestamp="1616354021811">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state width="2027" height="376" key="GridCell.Tab.1.right/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1616354021811" />
-    <state x="515" y="171" key="SettingsEditor" timestamp="1611491800932">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="515" y="171" key="SettingsEditor/2560.-1450.1440.2527/0.0.2048.1112@0.0.2048.1112" timestamp="1611491800932" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/source/batch_process_send.py</url>
-          <line>250</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/source/batch_process_send.py</url>
-          <line>172</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/source/office/excel_database.py</url>
-          <line>142</line>
+          <line>134</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/source/office/outlook_mail.py</url>
+          <line>122</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/source/batch_process_send_test.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/OAMail$batch_process_send.coverage" NAME="batch_process_send Coverage Results" MODIFIED="1616388854977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
+    <SUITE FILE_PATH="coverage/OAMail$batch_process_send_test.coverage" NAME="batch_process_send_test Coverage Results" MODIFIED="1616419406685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
   </component>
 </project>
