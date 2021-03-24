@@ -117,23 +117,18 @@ class OutlookMail(object):
         :param body: 邮件内容
         :return: 无
         """
-        # recipient = self._send_mail.Recipients.Add(to)
-        # olTo 1   olCC  2
-        # recipient.Type = 1
-        # if len(cc) == 0:
-        #    recipient = self._send_mail.Recipients.Add(cc)
-        #    recipient.Type = 2
         self._send_mail.To = to
         self._send_mail.CC = cc
         self._send_mail.Subject = subject
         self._send_mail.SendUsingAccount = self._send_account
         # 这儿有个黑科技，有个BUG，好像是微软十年没改。或者？我用EXCEL VBA操作是正常的，Python不行
-        # https://www.jianshu.com/p/4f0ed762f521
+        # https://www.jianshu.com/p/4f0ed762f521 可以看看这个链接的解释
         self._send_mail._oleobj_.Invoke(*(64209, 0, 8, 0, self._send_account))
-
-        # 1:
-        self._send_mail.BodyFormat = 1
+        # 2: olFormatHTML 3：olFormatRichText 1:olFormatPlain
+        self._send_mail.BodyFormat = 2
+        # 这儿用的是Body，不是 HTMLBody
         self._send_mail.Body = body
+
         return
 
     def set_sendmail_all(self, mail):
