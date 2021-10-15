@@ -40,8 +40,8 @@ class OutlookMail(object):
         self._out_info.clear()
         return
 
-    # 独立初始化函数
     def start(self):
+        # 独立初始化函数
         try:
             # 使用MAPI连接Outlook
             self._outlook_app = win32.Dispatch('Outlook.Application')
@@ -63,7 +63,7 @@ class OutlookMail(object):
         退出Outlook,
         :return:
         """
-        self._ol_namespace.Application.Quit()
+        self._outlook_app.Quit()
         return
 
     def get_accounts(self):
@@ -112,7 +112,7 @@ class OutlookMail(object):
         """
         发送邮件
         :param to: 邮件接受者
-        :param cc:
+        :param cc: 抄送人
         :param subject: 邮件标题
         :param body: 邮件内容
         :return: 无
@@ -122,9 +122,10 @@ class OutlookMail(object):
         self._send_mail.Subject = subject
         self._send_mail.SendUsingAccount = self._send_account
         # 这儿有个黑科技，有个BUG，好像是微软十年没改。或者？我用EXCEL VBA操作是正常的，Python不行
+        # 直接设置 mail_item.SendUsingAccount 不会起作用
         # https://www.jianshu.com/p/4f0ed762f521 可以看看这个链接的解释
         self._send_mail._oleobj_.Invoke(*(64209, 0, 8, 0, self._send_account))
-        # 2: olFormatHTML 3：olFormatRichText 1:olFormatPlain
+        # 1:olFormatPlain 2: olFormatHTML 3：olFormatRichText
         self._send_mail.BodyFormat = 2
         # 这儿用的是Body，不是 HTMLBody
         self._send_mail.Body = body

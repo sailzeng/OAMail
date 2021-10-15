@@ -27,7 +27,14 @@ class ExcelDataBase(object):
         退出EXCEL,
         :return:
         """
-        self._excel_app.Quit()
+        self.close()
+        if self._excel_app:
+            self._excel_app.Quit()
+            self._excel_app = None
+        self._is_open = False
+        self._xls_file = None
+        self._is_open = False
+        self._is_new = False
         return
 
     def open_book(self, file_name, not_exist_new) -> bool:
@@ -41,7 +48,9 @@ class ExcelDataBase(object):
         # 不光必须用绝对路径，还需要实用原生的路径分割符号'\'
 
         self._work_book = self._excel_app.Workbooks.Open(file_name)
-        # self.work_book_ = self.excel_app_.ActiveWorkBook
+        if not self._work_book:
+            return False
+        # self._work_book = self.excel_app_.ActiveWorkBook
         self._xls_file = os.path.abspath(file_name)
         self._is_open = True
         self._work_sheets = self._work_book.Worksheets
@@ -58,18 +67,36 @@ class ExcelDataBase(object):
 
     def close(self):
         """关闭打开的EXCEL,"""
-        self._is_open = False
-        self._xls_file = None
-        self._work_book.Close(True)
-        self._is_open = False
-        self._is_new = False
+        self.save()
+        if not self._excel_app and not self._work_book:
+            self._work_book.Close(True)
+            self._work_book = None
+            self._is_open = False
+            self._xls_file = ""
         return
+
+    def save(self):
+        if not self._work_book or self._xls_file == "":
+            return
+        if self.book_saved:
+            return
+        if self._is_new:
+            self._work_book.SaveAs(self._xls_file)
+            self._is_new = False
+        else:
+            self._work_book.Save()
+
+    @property
+    def book_saved(self) -> bool:
+        saved = self._work_book.Saved
+        return bool(saved)
 
     def sheets_count(self):
         count = self._work_sheets.Count
         return count
 
     def sheets_name(self):
+        """返回sheets 的名称列表"""
         name_list = []
         count = self._work_sheets.Count
         i = 0
