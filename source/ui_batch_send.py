@@ -1,4 +1,4 @@
-import PyQt5.sip
+
 from PyQt5.QtWidgets import QApplication, QMainWindow, QStatusBar, QButtonGroup, QPushButton, QGridLayout, QLabel, \
     QRadioButton, QFileDialog, QMessageBox, QLineEdit, QTextEdit, QFrame, QWidget, QComboBox
 from PyQt5.QtCore import Qt
@@ -7,6 +7,7 @@ from PyQt5.QtGui import QIcon
 import batch_send as bps
 import office.outlook_mail as outlook
 from batch_send import RowNumConfig
+import ctypes
 
 
 class BatchSendMailWidget(QMainWindow):
@@ -19,7 +20,7 @@ class BatchSendMailWidget(QMainWindow):
         super().__init__()
         # UI处理的各种成员
         self.setCentralWidget(QWidget())
-        self.setWindowIcon(QIcon('./icon/mail.ico'))
+        self.setWindowIcon(QIcon('./icon/mail.png'))
         ctrl_line = []
         self._ctrl_matrix = []
         self._btn_group = []
@@ -365,6 +366,7 @@ class BatchSendMailWidget(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication([])
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("OAMail")
     font = app.font()
     font.setPointSize(11)
     app.setFont(font)

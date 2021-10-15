@@ -1,0 +1,1 @@
+pyinstaller -F -w ui_batch_send.py -i icon/mail.ico -n OAMail
