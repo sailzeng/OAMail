@@ -1,0 +1,7 @@
+# Python PyCharm
+
+.idea
+__pycache__
+venv
+build
+clear_all_history.bat
